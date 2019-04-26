@@ -30,7 +30,7 @@
         android:id="@+id/loginorup"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/登录注册按钮"
+        android:background="@drawable/loginorup_btn"
         android:layout_marginTop="86dp"/>
     <TextView
         android:id="@+id/problem"
