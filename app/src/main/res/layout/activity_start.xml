@@ -20,7 +20,7 @@
         android:background="@drawable/edit_round"
         android:hint="@string/Code"
         android:layout_marginTop="40dp"/>
-    <Button
+    <ImageButton
         android:id="@+id/login"
         android:layout_width="100dp"
         android:layout_height="100dp"

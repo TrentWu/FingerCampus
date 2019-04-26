@@ -27,7 +27,7 @@ public class StudentLoginActivity extends Activity {
     public void init(){
         account_edit = findViewById(R.id.account);
         password_edit = findViewById(R.id.password);
-        loginorup_ibtn = findViewById(R.id.loginorup);
+        loginorup_ibtn = findViewById(R.id.login);
     }
 
 
