@@ -24,8 +24,7 @@ public class Dao {
         ContentValues contentValues = new ContentValues();
         contentValues.put(Constans.USER.uphone, uphone);
         contentValues.put(Constans.USER.upassword, upassword);
-        long row = databaseHelper.insert(Constans.TABLE_NAME.USER, null, contentValues);
-        return row;
+        return databaseHelper.insert(Constans.TABLE_NAME.USER, null, contentValues);
     }
 
     public void delete(){
