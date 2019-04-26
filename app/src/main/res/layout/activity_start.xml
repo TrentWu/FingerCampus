@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal">
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="一点校园"
-        android:textColor="#03CA74"
-        android:textSize="48sp"
-        android:paddingTop="114dp"
-        android:paddingBottom="116dp"/>
 
     <EditText
         android:id="@+id/account"
@@ -21,25 +11,26 @@
         android:layout_height="40dp"
         android:textAlignment="center"
         android:background="@drawable/edit_round"
-        android:hint="账号"/>
+        android:hint="@string/Account" />
     <EditText
         android:id="@+id/password"
         android:layout_width="270dp"
         android:layout_height="40dp"
         android:textAlignment="center"
         android:background="@drawable/edit_round"
-        android:hint="密码"
+        android:hint="@string/Code"
         android:layout_marginTop="40dp"/>
-    <ImageButton
-        android:id="@+id/loginorup"
+    <Button
+        android:id="@+id/login"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/loginorup_btn"
-        android:layout_marginTop="86dp"/>
+        android:layout_marginTop="86dp"
+        android:contentDescription="@string/todo" />
     <TextView
         android:id="@+id/problem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登录遇到问题？"
+        android:text="@string/Help"
         android:paddingTop="100dp"/>
-</LinearLayout>
+</RelativeLayout>
