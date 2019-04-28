@@ -41,22 +41,25 @@ public class StudentLoginActivity extends Activity {
             public void onClick(View v) {
                 String account = account_edit.getText().toString().trim();
                 String password = password_edit.getText().toString().trim();
-                String uname = dao.uloginConfirm(account, password);
-                if (uname != null) {
-                    //利用SharedPreferences存储用户信息
-                    SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(Constans.USER.uphone, account);
-                    editor.apply();
-                    Toast.makeText(StudentLoginActivity.this, "欢迎你，" + uname + "！", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
-                }
-                else{
-                    Toast.makeText(StudentLoginActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
+                if (account.equals("")) {
+                    Toast.makeText(StudentLoginActivity.this, "请输入手机号码！", Toast.LENGTH_SHORT).show();
+                } else if (password.equals("")) {
+                    Toast.makeText(StudentLoginActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
+                } else {
+                    String uname = dao.uloginConfirm(account, password);
+                    if (uname != null) {
+                        //利用SharedPreferences存储用户信息
+                        SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(Constans.USER.uphone, account);
+                        editor.apply();
+                        Toast.makeText(StudentLoginActivity.this, "欢迎你，" + uname + "！", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
+                    } else {
+                        Toast.makeText(StudentLoginActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
     }
-
-
 }
