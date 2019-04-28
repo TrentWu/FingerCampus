@@ -56,7 +56,7 @@
         app:shadow_blur="10dp"
         app:shadow_color="#FFFFFF"
         app:shadow_radius="100dp"
-        >
+        tools:visibility="visible">
 
         <RelativeLayout
             android:id="@+id/remain"
