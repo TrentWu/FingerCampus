@@ -1,5 +1,6 @@
 package com.example.fingercampus;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -28,14 +29,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //在调用该类的getInstance()方法时才会去初始化mInstance
-    public static DatabaseHelper getInstance(Context context){
+    public static DatabaseHelper getInstance(Context context) {
         DatabaseHelper.context = context;
         return DatabaseHelperHolder.mInstance;
     }
 
     //静态内部类
     //因为一个ClassLoader下同一个类只会加载一次，保证了并发时不会得到不同的对象
-    public static class DatabaseHelperHolder{
+    public static class DatabaseHelperHolder {
         public static DatabaseHelper mInstance = new DatabaseHelper(DatabaseHelper.context);
     }
 
@@ -45,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "创建数据库……");
         //创建字段
         String sqlstr =
-                "CREATE TABLE "+ Constans.TABLE_NAME.USER +
+                "CREATE TABLE " + Constans.TABLE_NAME.USER +
                         "(uid INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
                         "uname VARCHAR(20), " +
                         "usex VARCHAR(2), " +
@@ -60,6 +61,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "uphone CHAR(11) NOT NULL, " +
                         "upassword VARCHAR(16) NOT NULL)";
         db.execSQL(sqlstr);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Constans.USER.uname, "TrentWu");
+        contentValues.put(Constans.USER.uphone, "18963345396");
+        contentValues.put(Constans.USER.upassword, "123456");
+        Log.d(TAG, "预设用户名：TrentWu");
+        db.insert(Constans.TABLE_NAME.USER, null, contentValues);
     }
 
     @Override
