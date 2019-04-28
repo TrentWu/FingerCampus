@@ -8,40 +8,31 @@
     android:orientation="vertical"
     android:background="@color/firstColor"
     android:gravity="center_horizontal">
-    <com.example.fingercampus.ShadowRelativeLayout
+    <android.support.v7.widget.CardView
         android:id="@+id/def"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="10dp"
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:layout_gravity="top|start"
         android:layout_marginTop="-200dp"
         android:layout_marginStart="100dp"
-        android:layout_marginBottom="200dp"
-        android:layout_marginEnd="100dp"
         android:padding="10dp"
-        app:shadow_radius="100dp"
-        android:rotation="45"
-        android:background="@drawable/de_equare"
-        app:shadow_blur="10dp"
-        app:shadow_color="#FFFFFF">
-
+        android:rotation="45">
         <Button
             android:id="@+id/register"
+            android:rotation="-45"
+            android:layout_marginBottom="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_gravity="bottom|end"
+            android:background="@mipmap/register"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_alignStart="@+id/register"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="50dp"
-            android:background="@mipmap/register"
-            android:gravity="center"
-            android:rotation="-45"
-            android:visibility="visible"
-            tools:visibility="visible" />
-    </com.example.fingercampus.ShadowRelativeLayout>
+            android:elevation="40dp"/>
+    </android.support.v7.widget.CardView>
 
-    <com.example.fingercampus.ShadowRelativeLayout
+    <android.support.v7.widget.CardView
         android:id="@+id/des"
         android:layout_width="600dp"
         android:layout_height="600dp"
@@ -53,9 +44,8 @@
         android:background="@drawable/de_equare"
         android:padding="10dp"
         android:rotation="45"
-        app:shadow_blur="10dp"
-        app:shadow_color="#FFFFFF"
-        app:shadow_radius="100dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="100dp"
         >
 
         <RelativeLayout
@@ -103,5 +93,5 @@
                 android:paddingTop="100dp"
                 android:text="@string/Help" />
         </RelativeLayout>
-    </com.example.fingercampus.ShadowRelativeLayout>
+    </android.support.v7.widget.CardView>
 </FrameLayout>
