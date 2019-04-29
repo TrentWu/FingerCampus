@@ -5,4 +5,5 @@
     <string name="Code">密码</string>
     <string name="Help">登录遇到问题？</string>
     <string name="todo">TODO</string>
+    <string name="register">register</string>
 </resources>
