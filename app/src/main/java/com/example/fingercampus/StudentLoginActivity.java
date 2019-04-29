@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ public class StudentLoginActivity extends Activity {
 
     private EditText account_edit;
     private EditText password_edit;
-    private ImageButton login_ibtn;
+    private Button login_ibtn;
     private Dao dao = new Dao(this);
 
     @Override

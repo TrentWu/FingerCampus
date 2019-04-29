@@ -9,6 +9,25 @@
     android:background="@color/firstColor"
     android:gravity="center_horizontal">
     <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="40dp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="20dp"
+        android:layout_marginEnd="90dp">
+    <Button
+        android:id="@+id/login"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/firstColor"
+        android:text="@string/login"
+        android:background="#00000000"
+        android:contentDescription="@string/login" />
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
         android:id="@+id/def"
         app:cardBackgroundColor="#ffffff"
         app:cardCornerRadius="100dp"
@@ -20,16 +39,36 @@
         android:layout_marginStart="100dp"
         android:padding="10dp"
         android:rotation="45">
-        <ImageButton
-            android:id="@+id/register"
-            android:rotation="-45"
-            android:layout_marginBottom="50dp"
-            android:layout_marginEnd="50dp"
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:background="@mipmap/register"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="@string/register" />
+            android:rotation="-45"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_t"
+                android:textSize="20sp"
+                android:textColor="@color/firstColor"
+                android:textStyle="bold"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center"/>
+            <Button
+                android:id="@+id/register"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="35dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/round"
+                android:contentDescription="@string/register"
+                android:elevation="30dp"
+                android:foreground="@mipmap/register"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
@@ -39,8 +78,8 @@
         android:layout_gravity="bottom|end"
         android:layout_marginStart="100dp"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="-100dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="-50dp"
         android:background="@drawable/de_equare"
         android:padding="10dp"
         android:rotation="45"
@@ -50,48 +89,55 @@
 
         <RelativeLayout
             android:id="@+id/remain"
-            android:layout_width="404dp"
-            android:layout_height="331dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="29dp"
-            android:layout_marginBottom="20dp"
+            android:layout_width="460dp"
+            android:layout_height="607dp"
+            android:layout_marginTop="-60dp"
+            android:layout_marginEnd="30dp"
+            android:layout_gravity="end"
             android:gravity="end|top"
             android:rotation="-45">
 
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/logo"
+                android:src="@mipmap/logo" />
+
             <EditText
                 android:id="@+id/account"
-                android:layout_width="270dp"
+                android:layout_width="300dp"
                 android:layout_height="40dp"
+                android:layout_below="@+id/logo"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/edit_round"
                 android:hint="@string/Account"
                 android:textAlignment="center"
                 tools:ignore="Autofill,TextFields" />
 
             <EditText
                 android:id="@+id/password"
-                android:layout_width="270dp"
+                android:layout_width="300dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="40dp"
+                android:layout_below="@+id/account"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/edit_round"
                 android:hint="@string/Code"
+                android:inputType="textPassword"
                 android:textAlignment="center"
                 tools:ignore="Autofill,TextFields" />
 
-            <ImageButton
-                android:id="@+id/login"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="86dp"
-                android:background="@drawable/loginorup_btn"
-                android:contentDescription="@string/todo" />
-
             <TextView
                 android:id="@+id/problem"
+                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="100dp"
-                android:text="@string/Help" />
+                android:layout_below="@+id/password"
+                android:layout_alignEnd="@+id/password"
+                android:text="@string/Help"
+                android:textColor="@color/firstColor" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
 </FrameLayout>
