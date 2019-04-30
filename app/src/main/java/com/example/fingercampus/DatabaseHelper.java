@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 /**
@@ -48,25 +47,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String sqlstr =
                 "CREATE TABLE " + Constans.TABLE_NAME.USER +
                         "(uid INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-                        "uname VARCHAR(20), " +
-                        "usex VARCHAR(2), " +
-                        "ubirthday VARCHAR(20), " +
-                        "uage INTEGER CHECK(uage>=0), " +
-                        "uuniversity VARCHAR(20), " +
-                        "ucollege VARCHAR(20), " +
-                        "umajor VARCHAR(20), " +
-                        "uclass VARCHAR(20), " +
-                        "uno VARCHAR(20) UNIQUE, " +
-                        "uemail VARCHAR(200) UNIQUE, " +
-                        "uphone CHAR(11) NOT NULL, " +
-                        "upassword VARCHAR(16) NOT NULL)";
+                        "uphone CHAR(11) NOT NULL)";
         db.execSQL(sqlstr);
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(Constans.USER.uname, "TrentWu");
-        contentValues.put(Constans.USER.uphone, "18963345396");
-        contentValues.put(Constans.USER.upassword, "123456");
-        Log.d(TAG, "预设用户名：TrentWu");
-        db.insert(Constans.TABLE_NAME.USER, null, contentValues);
     }
 
     @Override
