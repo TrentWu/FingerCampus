@@ -98,7 +98,9 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="230dp"
+                android:layout_centerHorizontal="true"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/logo"
@@ -108,12 +110,12 @@
                 android:id="@+id/account"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="0dp"
                 android:layout_below="@+id/logo"
-                android:layout_marginTop="10dp"
+                android:layout_alignParentEnd="true"
                 android:background="@drawable/edit_round"
                 android:hint="@string/Account"
                 android:textAlignment="center"
-                android:layout_marginStart="10dp"
                 tools:ignore="Autofill,TextFields" />
 
             <EditText
@@ -121,8 +123,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
-                android:layout_below="@+id/account"
                 android:layout_marginTop="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/account"
                 android:background="@drawable/edit_round"
                 android:hint="@string/Code"
                 android:inputType="textPassword"
