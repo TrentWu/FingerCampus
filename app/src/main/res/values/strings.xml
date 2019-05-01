@@ -10,4 +10,9 @@
     <string name="logo">logo</string>
     <string name="login">登录</string>
     <string name="logout">注销</string>
+    <string name="tip1">请输入您的手机号</string>
+    <string name="tip2">请输入6-16位密码</string>
+    <string name="tip3">验证码</string>
+    <string name="clicktoget">点击获取</string>
+    <string name="back">返回</string>
 </resources>
