@@ -20,12 +20,12 @@ public class Dao {
     /**
      * 插入学生信息
      *
-     * @param uphone    学生手机号
+     * @param usphone    学生手机号
      * @return 学生id
      */
-    public long uinsert(String uphone) {
+    public long uinsert(String usphone) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(Constans.USER.uphone, uphone);
+        contentValues.put(Constans.USER.usphone, usphone);
         return databaseHelper.insert(Constans.TABLE_NAME.USER, null, contentValues);
     }
 }

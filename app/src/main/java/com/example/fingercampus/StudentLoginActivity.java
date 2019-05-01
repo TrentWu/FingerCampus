@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,17 +33,23 @@ public class StudentLoginActivity extends Activity {
     private EditText account_edit;
     private EditText password_edit;
     private Button login_ibtn;
-    private Dao dao = new Dao(this);
+    private String TAG = "StudentLoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //查看SharedPreferences中是否存储了用户账号信息，来决定是否跳转到登录界面
+        SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
+        if (sharedPreferences.getString(Constans.USER.usphone, null) != null) {
+            startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
+        }
         setContentView(R.layout.activity_start);
         init();
     }
 
     //初始化登录界面
     public void init() {
+        Dao dao = new Dao(this);
         account_edit = findViewById(R.id.account);
         password_edit = findViewById(R.id.password);
         login_ibtn = findViewById(R.id.login);
@@ -59,13 +63,13 @@ public class StudentLoginActivity extends Activity {
                 } else if (stu_password.equals("")) {
                     Toast.makeText(StudentLoginActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
                 } else {
-                    StuLoginRequest(stu_account, stu_password);
+                    LoginRequest(stu_account, stu_password);
                 }
             }
         });
     }
 
-    public void StuLoginRequest(final String accountNumber, final String password) {
+    public void LoginRequest(final String usphone, final String uspassword) {
         //请求地址
         String url = "http://119.3.232.205:8080/FingerCampus/LoginServlet";    //注①
         String tag = "Login";    //注②
@@ -84,22 +88,22 @@ public class StudentLoginActivity extends Activity {
                         try {
                             JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");  //注③
                             String result = jsonObject.getString("Result");  //注④
-                            String stdname = jsonObject.getString("stdname");
                             if (result.equals("success")) {  //注⑤
                                 //利用SharedPreferences存储用户信息
                                 SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString(Constans.USER.uphone, accountNumber);
+                                editor.putString(Constans.USER.usphone, usphone);
                                 editor.apply();
-                                Toast.makeText(StudentLoginActivity.this, "欢迎你，" + stdname + "！", Toast.LENGTH_LONG).show();
+                                Toast.makeText(StudentLoginActivity.this, "欢迎你，" + usphone + "！", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
+                                password_edit.setText(null);
                             } else {
                                 Toast.makeText(StudentLoginActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             //做自己的请求异常操作，如Toast提示（“无网络连接”等）
                             Toast.makeText(StudentLoginActivity.this, "无网络连接", Toast.LENGTH_SHORT).show();
-                            Log.e("TAG", e.getMessage(), e);
+                            Log.e(TAG, e.getMessage(), e);
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -107,14 +111,16 @@ public class StudentLoginActivity extends Activity {
             public void onErrorResponse(VolleyError error) {
                 //做自己的响应错误操作，如Toast提示（“请稍后重试”等）
                 Toast.makeText(StudentLoginActivity.this, "请稍后重试", Toast.LENGTH_SHORT).show();
-                Log.e("TAG", error.getMessage(), error);
+                Log.e(TAG, error.getMessage(), error);
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("AccountNumber", accountNumber);  //注⑥
-                params.put("Password", password);
+                params.put("usphone", usphone);  //注⑥
+                params.put("uspassword", uspassword);
+                Log.d(TAG, "usphone=" + usphone);
+                Log.d(TAG, "uspassword=" + uspassword);
                 return params;
             }
         };

@@ -11,6 +11,6 @@ public class Constans {
         public static final String USER = "USER";
     }
     public static final class USER{
-        public static final String uphone = "uphone";
+        public static final String usphone = "usphone";
     }
 }

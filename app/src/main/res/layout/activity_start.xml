@@ -116,6 +116,7 @@
                 android:background="@drawable/edit_round"
                 android:hint="@string/Account"
                 android:textAlignment="center"
+                android:inputType="number"
                 tools:ignore="Autofill,TextFields" />
 
             <EditText
