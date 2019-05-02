@@ -51,10 +51,11 @@ public class StudentLoginActivity extends Activity {
         if (sharedPreferences.getString(Constants.RECORD.rephone, null) != null) {
             startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
         }
+        //使用阿里图标库
         setContentView(R.layout.activity_start);
-//        Typeface typeface=Typeface.createFromAsset(getAssets(),"iconfont/iconfont.ttf");
-//        TextView textView=findViewById(R.id.test);
-//        textView.setTypeface(typeface);
+        Typeface typeface=Typeface.createFromAsset(getAssets(),"iconfont");//添加字体包
+        TextView textView=findViewById(R.id.test);
+        textView.setTypeface(typeface);
         init();
     }
 
