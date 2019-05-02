@@ -2,7 +2,6 @@ package com.example.fingercampus;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 /**
  * 学生注册类

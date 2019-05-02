@@ -1,5 +1,6 @@
 package com.example.fingercampus;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,6 +21,12 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,15 +38,15 @@ public class StudentLoginActivity extends Activity {
 
     private EditText account_edit;
     private EditText password_edit;
-    private Button login_ibtn;
     private String TAG = "StudentLoginActivity";
+    private Dao dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //查看SharedPreferences中是否存储了用户账号信息，来决定是否跳转到登录界面
         SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
-        if (sharedPreferences.getString(Constans.USER.usphone, null) != null) {
+        if (sharedPreferences.getString(Constants.RECORD.rephone, null) != null) {
             startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
         }
         setContentView(R.layout.activity_start);
@@ -49,11 +55,12 @@ public class StudentLoginActivity extends Activity {
 
     //初始化登录界面
     public void init() {
-        Dao dao = new Dao(this);
+        dao = new Dao(this);
         account_edit = findViewById(R.id.account);
         password_edit = findViewById(R.id.password);
-        login_ibtn = findViewById(R.id.login);
-        login_ibtn.setOnClickListener(new View.OnClickListener() {
+        account_edit.setText(dao.uQuery());
+        Button loginImageBtn = findViewById(R.id.login);
+        loginImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String stu_account = account_edit.getText().toString().trim();
@@ -69,6 +76,12 @@ public class StudentLoginActivity extends Activity {
         });
     }
 
+    /**
+     * 用户登录请求类
+     *
+     * @param usphone       用户手机号
+     * @param uspassword    用户密码
+     */
     public void LoginRequest(final String usphone, final String uspassword) {
         //请求地址
         String url = "http://119.3.232.205:8080/FingerCampus/LoginServlet";    //注①
@@ -92,8 +105,16 @@ public class StudentLoginActivity extends Activity {
                                 //利用SharedPreferences存储用户信息
                                 SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString(Constans.USER.usphone, usphone);
+                                editor.putString(Constants.RECORD.rephone, usphone);
                                 editor.apply();
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        String netDate = getNetTime();
+                                        dao.uRecordInsert(usphone, netDate);
+                                        Log.d(TAG, "rephone=" + usphone + " redate=" + netDate);
+                                    }
+                                }).start();
                                 Toast.makeText(StudentLoginActivity.this, "欢迎你，" + usphone + "！", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
                                 password_edit.setText(null);
@@ -115,7 +136,7 @@ public class StudentLoginActivity extends Activity {
             }
         }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams(){
                 Map<String, String> params = new HashMap<>();
                 params.put("usphone", usphone);  //注⑥
                 params.put("uspassword", uspassword);
@@ -130,6 +151,31 @@ public class StudentLoginActivity extends Activity {
 
         //将请求添加到队列中
         requestQueue.add(request);
+    }
+
+    /**
+     * 获取网络时间
+     * 需要开子线程
+     *
+     * @return 返回中国科学院国家授时中心网址时间
+     */
+    public String getNetTime() {
+        String netDate = "1970-01-01 00:00:00";
+        URL url;
+        try {
+            url = new URL("http://www.ntsc.ac.cn/");
+            URLConnection urlConnection = url.openConnection();//生成链接对象
+            urlConnection.connect();//发出链接
+            long longDate = urlConnection.getDate();//取得网站日期时间
+            @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(longDate);
+            netDate = dateFormat.format(calendar.getTime());
+            return netDate;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return netDate;
     }
 
 }
