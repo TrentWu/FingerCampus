@@ -111,6 +111,8 @@
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="0dp"
+                android:inputType="number"
+                android:singleLine="true"
                 android:layout_below="@+id/logo"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/edit_round"
@@ -121,6 +123,7 @@
 
             <EditText
                 android:id="@+id/password"
+                android:singleLine="true"
                 android:layout_marginStart="10dp"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
