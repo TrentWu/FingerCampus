@@ -1,6 +1,7 @@
 package com.example.fingercampus;
 
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;

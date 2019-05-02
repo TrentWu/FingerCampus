@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -50,6 +52,9 @@ public class StudentLoginActivity extends Activity {
             startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
         }
         setContentView(R.layout.activity_start);
+//        Typeface typeface=Typeface.createFromAsset(getAssets(),"iconfont/iconfont.ttf");
+//        TextView textView=findViewById(R.id.test);
+//        textView.setTypeface(typeface);
         init();
     }
 

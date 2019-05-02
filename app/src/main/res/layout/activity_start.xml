@@ -58,15 +58,13 @@
                 android:layout_gravity="center"/>
             <Button
                 android:id="@+id/register"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="bottom|end"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="35dp"
                 android:layout_marginBottom="50dp"
-                android:background="@drawable/round"
+                android:elevation="10dp"
                 android:contentDescription="@string/register"
-                android:elevation="30dp"
-                android:foreground="@mipmap/register"
+                android:background="@drawable/ic_zhuce"
                 tools:ignore="UnusedAttribute" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -118,7 +116,6 @@
                 android:background="@drawable/edit_round"
                 android:hint="@string/Account"
                 android:textAlignment="center"
-                android:inputType="number"
                 tools:ignore="Autofill,TextFields" />
 
             <EditText
@@ -144,7 +141,19 @@
                 android:layout_below="@+id/password"
                 android:layout_alignStart="@+id/password"
                 android:text="@string/Help"
-                android:textColor="@color/firstColor" />
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/firstColor"
+                />
+<!--            <TextView-->
+<!--                android:id="@+id/test"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/problem"-->
+<!--                android:layout_toEndOf="@+id/problem"-->
+<!--                android:text="@string/icons"-->
+<!--                android:textSize="80sp"-->
+<!--                />-->
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
