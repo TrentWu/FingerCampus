@@ -7,10 +7,12 @@ package com.example.fingercampus;
 class Constants {
     static final String DATABASE_NAME = "fingercampus.db";
     static final int VERSION_CODE = 1;
-    static final class TABLE_NAME{
+
+    static final class TABLE_NAME {
         static final String RECORD = "RECORD";
     }
-    static final class RECORD{
+
+    static final class RECORD {
         static final String reid = "reid";
         static final String rephone = "rephone";
         static final String redate = "redate";

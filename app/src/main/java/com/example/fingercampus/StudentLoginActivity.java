@@ -4,13 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -53,9 +51,9 @@ public class StudentLoginActivity extends Activity {
         }
         //使用阿里图标库
         setContentView(R.layout.activity_start);
-        Typeface typeface=Typeface.createFromAsset(getAssets(),"iconfont");//添加字体包
-        TextView textView=findViewById(R.id.test);
-        textView.setTypeface(typeface);
+//        Typeface typeface=Typeface.createFromAsset(getAssets(),"iconfont");//添加字体包
+//        TextView textView=findViewById(R.id.test);
+//        textView.setTypeface(typeface);
         init();
     }
 
@@ -65,7 +63,7 @@ public class StudentLoginActivity extends Activity {
         account_edit = findViewById(R.id.account);
         password_edit = findViewById(R.id.password);
         account_edit.setText(dao.uQuery());
-        Button loginImageBtn = findViewById(R.id.login);
+        final Button loginImageBtn = findViewById(R.id.login);
         loginImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,7 +123,7 @@ public class StudentLoginActivity extends Activity {
                                 startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
                                 password_edit.setText(null);
                             } else {
-                                Toast.makeText(StudentLoginActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(StudentLoginActivity.this, "手机号或密码错误！", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             //做自己的请求异常操作，如Toast提示（“无网络连接”等）
