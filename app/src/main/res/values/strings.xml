@@ -15,5 +15,5 @@
     <string name="tip3">验证码</string>
     <string name="clicktoget">点击获取</string>
     <string name="back">返回</string>
-<!--    <string name="icons">在此添加图标Unicode代码</string>-->
+    <!--    <string name="icons">在此添加图标Unicode代码</string>-->
 </resources>

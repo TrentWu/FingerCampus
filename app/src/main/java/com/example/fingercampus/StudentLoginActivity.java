@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.mob.MobSDK;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +30,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 学生登录类
@@ -60,6 +63,7 @@ public class StudentLoginActivity extends Activity {
     //初始化登录界面
     public void init() {
         dao = new Dao(this);
+        MobSDK.init(this);
         account_edit = findViewById(R.id.account);
         password_edit = findViewById(R.id.password);
         account_edit.setText(dao.uQuery());
@@ -74,7 +78,12 @@ public class StudentLoginActivity extends Activity {
                 } else if (stu_password.equals("")) {
                     Toast.makeText(StudentLoginActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
                 } else {
-                    LoginRequest(stu_account, stu_password);
+                    if (checkCellphone(stu_account)){
+                        LoginRequest(stu_account, stu_password);
+                    }
+                    else{
+                        Toast.makeText(StudentLoginActivity.this, "请输入正确的手机号！", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -83,8 +92,8 @@ public class StudentLoginActivity extends Activity {
     /**
      * 用户登录请求类
      *
-     * @param usphone       用户手机号
-     * @param uspassword    用户密码
+     * @param usphone    用户手机号
+     * @param uspassword 用户密码
      */
     public void LoginRequest(final String usphone, final String uspassword) {
         //请求地址
@@ -140,7 +149,7 @@ public class StudentLoginActivity extends Activity {
             }
         }) {
             @Override
-            protected Map<String, String> getParams(){
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("usphone", usphone);  //注⑥
                 params.put("uspassword", uspassword);
@@ -180,6 +189,27 @@ public class StudentLoginActivity extends Activity {
             e.printStackTrace();
         }
         return netDate;
+    }
+
+    /**
+     * 通过正则表达式验证手机号码
+     * <p>
+     * 移动号码段:139、138、137、136、135、134、150、151、152、157、158、159、182、183、184、187、178、188、147
+     * 联通号码段:130、131、132、155、156、176、185、186、145
+     * 电信号码段:133、153、180、189、177、181
+     * 虚拟运营商:170、171
+     *
+     * @param cellphone 需要验证的手机号
+     * @return 验证结果
+     */
+    public static boolean checkCellphone(String cellphone) {
+        //正则表达式
+        String regex = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[0-1,6-8])|(18[0-9]))\\d{8}$";
+        //编译正则表达式
+        Pattern pattern = Pattern.compile(regex);
+        //定义匹配器，验证手机号码
+        Matcher matcher = pattern.matcher(cellphone);
+        return matcher.matches();
     }
 
 }
