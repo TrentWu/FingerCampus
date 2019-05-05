@@ -35,7 +35,6 @@
             android:elevation="20dp"
             android:inputType="number"
             android:layout_marginBottom="10dp"
-            android:singleLine="true"
             tools:ignore="Autofill,TextFields" />
         <EditText
             android:id="@+id/password"
@@ -48,7 +47,6 @@
             android:background="@drawable/edit_round"
             android:elevation="20dp"
             android:inputType="textPassword"
-            android:singleLine="true"
             tools:ignore="Autofill" />
         <EditText
             android:id="@+id/code"
@@ -58,10 +56,10 @@
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
+            android:inputType="number"
             android:hint="@string/tip3"
             android:background="@drawable/edit_round"
             android:elevation="20dp"
-            android:singleLine="true"
             tools:ignore="Autofill,TextFields" />
             <Button
                 android:id="@+id/btncode"

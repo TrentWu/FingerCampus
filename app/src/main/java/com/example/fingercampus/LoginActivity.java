@@ -1,6 +1,5 @@
 package com.example.fingercampus;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,26 +21,18 @@ import com.mob.MobSDK;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * 学生登录类
  * 用于学生账号的登录
  */
-public class StudentLoginActivity extends Activity {
+public class LoginActivity extends Activity {
 
     private EditText account_edit;
     private EditText password_edit;
-    private String TAG = "StudentLoginActivity";
+    private String TAG = "LoginActivity";
     private Dao dao;
 
     @Override
@@ -50,7 +41,7 @@ public class StudentLoginActivity extends Activity {
         //查看SharedPreferences中是否存储了用户账号信息，来决定是否跳转到登录界面
         SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
         if (sharedPreferences.getString(Constants.RECORD.rephone, null) != null) {
-            startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
         //使用阿里图标库
         setContentView(R.layout.activity_start);
@@ -65,24 +56,30 @@ public class StudentLoginActivity extends Activity {
         dao = new Dao(this);
         MobSDK.init(this);
         account_edit = findViewById(R.id.account);
-        password_edit = findViewById(R.id.password);
         account_edit.setText(dao.uQuery());
-        final Button loginImageBtn = findViewById(R.id.login);
-        loginImageBtn.setOnClickListener(new View.OnClickListener() {
+        password_edit = findViewById(R.id.password);
+        Button registerButton = findViewById(R.id.register);
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String stu_account = account_edit.getText().toString().trim();
-                String stu_password = password_edit.getText().toString().trim();
-                if (stu_account.equals("")) {
-                    Toast.makeText(StudentLoginActivity.this, "请输入手机号码！", Toast.LENGTH_SHORT).show();
-                } else if (stu_password.equals("")) {
-                    Toast.makeText(StudentLoginActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
+        final Button loginButton = findViewById(R.id.login);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String account = account_edit.getText().toString().trim();
+                String password = password_edit.getText().toString().trim();
+                if (account.equals("")) {
+                    Toast.makeText(LoginActivity.this, "请输入手机号码！", Toast.LENGTH_SHORT).show();
+                } else if (password.equals("")) {
+                    Toast.makeText(LoginActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (checkCellphone(stu_account)){
-                        LoginRequest(stu_account, stu_password);
-                    }
-                    else{
-                        Toast.makeText(StudentLoginActivity.this, "请输入正确的手机号！", Toast.LENGTH_SHORT).show();
+                    if (Verification.phoneNumber(account)) {
+                        LoginRequest(account, password);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "请输入正确的手机号！", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -123,28 +120,26 @@ public class StudentLoginActivity extends Activity {
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        String netDate = getNetTime();
+                                        String netDate = Time.getNetTime();
                                         dao.uRecordInsert(usphone, netDate);
                                         Log.d(TAG, "rephone=" + usphone + " redate=" + netDate);
                                     }
                                 }).start();
-                                Toast.makeText(StudentLoginActivity.this, "欢迎你，" + usphone + "！", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(StudentLoginActivity.this, MainActivity.class));
+                                Toast.makeText(LoginActivity.this, "欢迎你，" + usphone + "！", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 password_edit.setText(null);
                             } else {
-                                Toast.makeText(StudentLoginActivity.this, "手机号或密码错误！", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "手机号或密码错误！", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
-                            //做自己的请求异常操作，如Toast提示（“无网络连接”等）
-                            Toast.makeText(StudentLoginActivity.this, "无网络连接", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "无网络连接", Toast.LENGTH_SHORT).show();
                             Log.e(TAG, e.getMessage(), e);
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //做自己的响应错误操作，如Toast提示（“请稍后重试”等）
-                Toast.makeText(StudentLoginActivity.this, "请稍后重试", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "请稍后重试", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, error.getMessage(), error);
             }
         }) {
@@ -164,52 +159,6 @@ public class StudentLoginActivity extends Activity {
 
         //将请求添加到队列中
         requestQueue.add(request);
-    }
-
-    /**
-     * 获取网络时间
-     * 需要开子线程
-     *
-     * @return 返回中国科学院国家授时中心网址时间
-     */
-    public String getNetTime() {
-        String netDate = "1970-01-01 00:00:00";
-        URL url;
-        try {
-            url = new URL("http://www.ntsc.ac.cn/");
-            URLConnection urlConnection = url.openConnection();//生成链接对象
-            urlConnection.connect();//发出链接
-            long longDate = urlConnection.getDate();//取得网站日期时间
-            @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(longDate);
-            netDate = dateFormat.format(calendar.getTime());
-            return netDate;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return netDate;
-    }
-
-    /**
-     * 通过正则表达式验证手机号码
-     * <p>
-     * 移动号码段:139、138、137、136、135、134、150、151、152、157、158、159、182、183、184、187、178、188、147
-     * 联通号码段:130、131、132、155、156、176、185、186、145
-     * 电信号码段:133、153、180、189、177、181
-     * 虚拟运营商:170、171
-     *
-     * @param cellphone 需要验证的手机号
-     * @return 验证结果
-     */
-    public static boolean checkCellphone(String cellphone) {
-        //正则表达式
-        String regex = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[0-1,6-8])|(18[0-9]))\\d{8}$";
-        //编译正则表达式
-        Pattern pattern = Pattern.compile(regex);
-        //定义匹配器，验证手机号码
-        Matcher matcher = pattern.matcher(cellphone);
-        return matcher.matches();
     }
 
 }
