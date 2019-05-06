@@ -40,7 +40,7 @@ public class RegisterActivity extends Activity {
     private EditText phone_edit;
     private EditText password_edit;
     private EditText code_edit;
-    private Button btncode;
+    private Button code_btn;
     private Button register_f;
 
     private String phone;
@@ -82,8 +82,8 @@ public class RegisterActivity extends Activity {
         phone_edit = findViewById(R.id.phone);
         password_edit = findViewById(R.id.password);
         code_edit = findViewById(R.id.code);
-        btncode = findViewById(R.id.btncode);
-        btncode.setOnClickListener(new View.OnClickListener() {
+        code_btn = findViewById(R.id.btncode);
+        code_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 phone = phone_edit.getText().toString().trim();
@@ -154,14 +154,14 @@ public class RegisterActivity extends Activity {
                             }
                         } catch (JSONException e) {
                             Toast.makeText(getApplicationContext(), "请正确填写注册信息！", Toast.LENGTH_SHORT).show();
-                            Log.e("TAG", e.getMessage(), e);
+                            Log.e(TAG, e.getMessage(), e);
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), "请检查网络连接，并重试！", Toast.LENGTH_SHORT).show();
-                Log.e("TAG", error.getMessage(), error);
+                Log.e(TAG, error.getMessage(), error);
             }
         }) {
             @Override
@@ -217,14 +217,14 @@ public class RegisterActivity extends Activity {
         @SuppressLint("SetTextI18n")
         @Override
         public void onTick(long millisUntilFinished) {
-            btncode.setClickable(false);
-            btncode.setText(millisUntilFinished / 1000 + "秒");
+            code_btn.setClickable(false);
+            code_btn.setText(millisUntilFinished / 1000 + "秒");
         }
 
         @Override
         public void onFinish() {
-            btncode.setClickable(true);
-            btncode.setText("重新获取");
+            code_btn.setClickable(true);
+            code_btn.setText("重新获取");
         }
     }
 
