@@ -126,8 +126,8 @@ public class RegisterActivity extends Activity {
 
     public void RegisterRequest(final String usphone, final String uspassword) {
         //请求地址
-        String url = "http://119.3.232.205:8080/FingerCampus/RegisterServlet";
-        String tag = "Register";
+        String url = "http://119.3.232.205:8080/FingerCampus/*";
+        final String tag = "Register";
 
         //取得请求队列
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -144,19 +144,15 @@ public class RegisterActivity extends Activity {
                             JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");
                             String result = jsonObject.getString("Result");
                             if (result.equals("success")) {
-                                //TODO 处理注册成功的结果
                                 Toast.makeText(RegisterActivity.this, "注册成功，快去登录看看吧！", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else if (result.equals("existed")){
-                                //TODO 处理重复注册的结果
                                 Toast.makeText(RegisterActivity.this, "该手机号已注册！", Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                //TODO 处理注册失败的结果
                                 Toast.makeText(getApplicationContext(), "注册失败,请检查注册信息是否填写正确！", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
-                            //TODO 处理注册请求失败的结果
                             Toast.makeText(getApplicationContext(), "请正确填写注册信息！", Toast.LENGTH_SHORT).show();
                             Log.e("TAG", e.getMessage(), e);
                         }
@@ -164,7 +160,6 @@ public class RegisterActivity extends Activity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //TODO 处理注册相应失败的结果
                 Toast.makeText(getApplicationContext(), "请检查网络连接，并重试！", Toast.LENGTH_SHORT).show();
                 Log.e("TAG", error.getMessage(), error);
             }
@@ -172,6 +167,7 @@ public class RegisterActivity extends Activity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
+                params.put("RequestType", tag);
                 params.put("usphone", usphone);
                 params.put("uspassword", uspassword);
                 return params;
@@ -195,21 +191,17 @@ public class RegisterActivity extends Activity {
             Object data = msg.obj;
             if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                 if (result == SMSSDK.RESULT_COMPLETE) {
-                    // TODO 处理成功发送验证码的结果
                     MCountDownTimer mCountDownTimer = new MCountDownTimer(60000, 1000);
                     mCountDownTimer.start();
                     code_edit.requestFocus();
                     Toast.makeText(RegisterActivity.this, "验证码发送成功！", Toast.LENGTH_SHORT).show();
                 } else {
-                    //TODO 处理发送验证码失败的结果
                     Toast.makeText(RegisterActivity.this, "验证码发送失败，请检查网络连接是否正常！", Toast.LENGTH_SHORT).show();
                 }
             } else if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                 if (result == SMSSDK.RESULT_COMPLETE) {
-                    //TODO 处理验证码验证通过的结果
                     RegisterRequest(phone, password);
                 } else {
-                    //TODO 处理验证码验证失败的结果
                     Toast.makeText(RegisterActivity.this, "请输入正确的验证码！", Toast.LENGTH_SHORT).show();
                 }
             }

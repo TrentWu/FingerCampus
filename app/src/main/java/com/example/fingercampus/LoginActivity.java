@@ -94,8 +94,8 @@ public class LoginActivity extends Activity {
      */
     public void LoginRequest(final String usphone, final String uspassword) {
         //请求地址
-        String url = "http://119.3.232.205:8080/FingerCampus/LoginServlet";    //注①
-        String tag = "Login";    //注②
+        String url = "http://119.3.232.205:8080/FingerCampus/*";    //注①
+        final String tag = "Login";    //注②
 
         //取得请求队列
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -146,6 +146,7 @@ public class LoginActivity extends Activity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
+                params.put("RequestType", tag);
                 params.put("usphone", usphone);  //注⑥
                 params.put("uspassword", uspassword);
                 Log.d(TAG, "usphone=" + usphone);
