@@ -32,6 +32,7 @@ public class LoginActivity extends Activity {
 
     private EditText account_edit;
     private EditText password_edit;
+    private Button loginButton;
     private String TAG = "LoginActivity";
     private Dao dao;
 
@@ -65,7 +66,7 @@ public class LoginActivity extends Activity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
-        final Button loginButton = findViewById(R.id.login);
+        loginButton = findViewById(R.id.login);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +78,7 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
                 } else {
                     if (Verification.phoneNumber(account)) {
+                        loginButton.setClickable(false);
                         LoginRequest(account, password);
                     } else {
                         Toast.makeText(LoginActivity.this, "请输入正确的手机号！", Toast.LENGTH_SHORT).show();
@@ -125,13 +127,16 @@ public class LoginActivity extends Activity {
                                         Log.d(TAG, "rephone=" + usphone + " redate=" + netDate);
                                     }
                                 }).start();
+                                loginButton.setClickable(true);
                                 Toast.makeText(LoginActivity.this, "欢迎你，" + usphone + "！", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 password_edit.setText(null);
                             } else {
+                                loginButton.setClickable(true);
                                 Toast.makeText(LoginActivity.this, "手机号或密码错误！", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
+                            loginButton.setClickable(true);
                             Toast.makeText(LoginActivity.this, "无网络连接", Toast.LENGTH_SHORT).show();
                             Log.e(TAG, e.getMessage(), e);
                         }
@@ -139,6 +144,7 @@ public class LoginActivity extends Activity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                loginButton.setClickable(true);
                 Toast.makeText(LoginActivity.this, "请稍后重试", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, error.getMessage(), error);
             }

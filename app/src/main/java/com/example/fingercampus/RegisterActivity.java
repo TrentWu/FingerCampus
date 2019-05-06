@@ -2,7 +2,6 @@ package com.example.fingercampus;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -36,12 +35,10 @@ import cn.smssdk.SMSSDK;
  */
 public class RegisterActivity extends Activity {
 
-    private TextView back_text;
     private EditText phone_edit;
     private EditText password_edit;
     private EditText code_edit;
     private Button code_btn;
-    private Button register_f;
 
     private String phone;
     private String password;
@@ -72,7 +69,7 @@ public class RegisterActivity extends Activity {
             }
         };
         SMSSDK.registerEventHandler(eventHandler);
-        back_text = findViewById(R.id.back);
+        TextView back_text = findViewById(R.id.back);
         back_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +107,7 @@ public class RegisterActivity extends Activity {
                 }
             }
         });
-        register_f = findViewById(R.id.register_f);
+        Button register_f = findViewById(R.id.register_f);
         register_f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
