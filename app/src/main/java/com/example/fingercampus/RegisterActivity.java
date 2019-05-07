@@ -120,7 +120,6 @@ public class RegisterActivity extends Activity {
             }
         });
     }
-
     public void RegisterRequest(final String usphone, final String uspassword) {
         //请求地址
         String url = "http://119.3.232.205:8080/FingerCampus/*";
