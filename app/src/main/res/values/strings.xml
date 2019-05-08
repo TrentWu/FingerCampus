@@ -15,5 +15,9 @@
     <string name="tip3">验证码</string>
     <string name="clicktoget">点击获取</string>
     <string name="back">返回</string>
+    <string name="repair">报修</string>
+    <string name="repair_position">请输入报修地点</string>
+    <string name="repair_des">请输入问题描述</string>
+    <string name="submit">提交</string>
     <!--    <string name="icons">在此添加图标Unicode代码</string>-->
 </resources>
