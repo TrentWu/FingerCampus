@@ -95,13 +95,6 @@ public class RegisterActivity extends Activity {
                     } else if (!Verification.password(password)) {
                         Toast.makeText(RegisterActivity.this, "请输入6-16位密码！", Toast.LENGTH_SHORT).show();
                     } else {
-                        //设置文本框不可编辑
-                        phone_edit.setEnabled(false);//去掉点击时编辑框下面横线:
-                        phone_edit.setFocusable(false);
-                        phone_edit.setFocusableInTouchMode(false);
-                        password_edit.setEnabled(false);//去掉点击时编辑框下面横线:
-                        password_edit.setFocusable(false);
-                        password_edit.setFocusableInTouchMode(false);
                         SMSSDK.getVerificationCode("86", phone);
                     }
                 }
@@ -114,6 +107,10 @@ public class RegisterActivity extends Activity {
                 code = code_edit.getText().toString().trim();
                 if (code.equals("")){
                     Toast.makeText(RegisterActivity.this, "请输入验证码！", Toast.LENGTH_SHORT).show();
+                } else if (password.equals("")){
+                    Toast.makeText(RegisterActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
+                } else if (!Verification.password(password)){
+                    Toast.makeText(RegisterActivity.this, "请输入6-16位密码！", Toast.LENGTH_SHORT).show();
                 } else {
                     SMSSDK.submitVerificationCode("86", phone, code);
                 }
