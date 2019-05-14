@@ -36,5 +36,12 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Button repair = findViewById(R.id.repair);
+        repair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RepairActivity.class));
+            }
+        });
     }
 }
