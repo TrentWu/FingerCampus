@@ -19,7 +19,8 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="m">
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Net.LoginActivity"
+            tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,8 +28,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".RepairActivity" />
+        <activity android:name=".Net.RegisterActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Repair.RepairActivity"
+            tools:ignore="InnerclassSeparator" />
     </application>
 
 </manifest>
