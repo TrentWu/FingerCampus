@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import com.example.fingercampus.R;
 
+import static com.example.fingercampus.R.layout.picpopupwindow;
+import static com.example.fingercampus.R.layout.recordingpopuowindow;
+
 public class RepairActivity extends Activity {
 
     private Spinner select;
@@ -101,7 +104,7 @@ public class RepairActivity extends Activity {
 
     private class ShowPopupWindow{
         void picture(View view){
-            @SuppressLint("InflateParams") View contentView = LayoutInflater.from(RepairActivity.this).inflate(R.layout.picpopupwindow,
+            @SuppressLint("InflateParams") View contentView = LayoutInflater.from(RepairActivity.this).inflate(picpopupwindow,
                     null);
             popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
             popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
@@ -137,7 +140,7 @@ public class RepairActivity extends Activity {
             popupWindow.showAsDropDown(view);
         }
         void recording(View view){
-            @SuppressLint("InflateParams") View contentView = LayoutInflater.from(RepairActivity.this).inflate(R.layout.recordingpopuowindow,
+            @SuppressLint("InflateParams") View contentView = LayoutInflater.from(RepairActivity.this).inflate(recordingpopuowindow,
                     null);
             popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
             popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
