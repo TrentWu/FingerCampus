@@ -32,6 +32,7 @@
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".Repair.RepairActivity"
             tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Attendence.AttendanceActivity" />
     </application>
 
 </manifest>
