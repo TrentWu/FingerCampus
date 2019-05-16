@@ -1,4 +1,4 @@
-package com.example.fingercampus;
+package com.example.fingercampus.Net;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -19,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fingercampus.R;
+import com.example.fingercampus.Tools.Verification;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,7 +94,7 @@ public class RegisterActivity extends Activity {
                 } else {
                     if (!Verification.phoneNumber(phone)) {
                         Toast.makeText(RegisterActivity.this, "请输入正确的手机号！", Toast.LENGTH_SHORT).show();
-                    } else if (!Verification.password(password)) {
+                    } else if (Verification.password(password)) {
                         Toast.makeText(RegisterActivity.this, "请输入6-16位密码！", Toast.LENGTH_SHORT).show();
                     } else {
                         SMSSDK.getVerificationCode("86", phone);
@@ -109,7 +111,7 @@ public class RegisterActivity extends Activity {
                     Toast.makeText(RegisterActivity.this, "请输入验证码！", Toast.LENGTH_SHORT).show();
                 } else if (password.equals("")){
                     Toast.makeText(RegisterActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
-                } else if (!Verification.password(password)){
+                } else if (Verification.password(password)){
                     Toast.makeText(RegisterActivity.this, "请输入6-16位密码！", Toast.LENGTH_SHORT).show();
                 } else {
                     SMSSDK.submitVerificationCode("86", phone, code);

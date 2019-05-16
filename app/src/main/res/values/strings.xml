@@ -22,5 +22,8 @@
     <string name="openCamera">打开相机</string>
     <string name="selectFromAlbum">从相册选取</string>
     <string name="picCancel">取消</string>
+    <string name="recording">录音</string>
+    <string name="recordingCancel">取消</string>
+    <string name="recordingSubmit">提交</string>
     <!--    <string name="icons">在此添加图标Unicode代码</string>-->
 </resources>

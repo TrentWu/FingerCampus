@@ -1,10 +1,12 @@
-package com.example.fingercampus;
+package com.example.fingercampus.Database;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.example.fingercampus.Constants;
 
 /**
  * 数据库管理类

@@ -1,9 +1,9 @@
-package com.example.fingercampus;
+package com.example.fingercampus.Tools;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Verification {
+public class Verification {
 
     /**
      * 通过正则表达式验证手机号码
@@ -16,7 +16,7 @@ class Verification {
      * @param cellphone 需要验证的手机号
      * @return 验证结果
      */
-    static boolean phoneNumber(String cellphone) {
+    public static boolean phoneNumber(String cellphone) {
         //正则表达式
         String regex = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[0-1,6-8])|(18[0-9]))\\d{8}$";
         //编译正则表达式
@@ -31,16 +31,16 @@ class Verification {
      * 密码位数限制在6-16位
      * 可使用大小写英文字母，阿拉伯数字，部分特殊符号
      *
-     * @param password 手机号
+     * @param password 密码
      * @return 验证结果
      */
-    static boolean password(String password){
+    public static boolean password(String password){
         //正则表达式
         String regex = "^([A-Z]|[a-z]|[0-9]|[`~!@#$%^&*()+=|{}':;,\\\\.\\[\\]<>/?！￥…（）—【】‘；：”“’。，、？]){6,16}$";
         //编译正则表达式
         Pattern pattern = Pattern.compile(regex);
         //定义匹配器，验证密码
         Matcher matcher = pattern.matcher(password);
-        return matcher.matches();
+        return !matcher.matches();
     }
 }

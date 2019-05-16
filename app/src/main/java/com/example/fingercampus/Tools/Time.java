@@ -1,4 +1,4 @@
-package com.example.fingercampus;
+package com.example.fingercampus.Tools;
 
 import android.annotation.SuppressLint;
 
@@ -9,14 +9,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-class Time {
+public class Time {
     /**
      * 获取网络时间
      * 需要开子线程
      *
      * @return 返回中国科学院国家授时中心网址时间
      */
-    static String getNetTime() {
+    public static String getNetTime() {
         String netDate = "1970-01-01 00:00:00";
         URL url;
         try {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+    <Button
+        android:id="@+id/recordingCancel"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="@string/recordingCancel"
+        android:textSize="18sp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
+        style="@style/AppTheme"/>
+    <Button
+        android:id="@+id/recording"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/firstColor"
+        android:background="@drawable/de_equare"
+        android:contentDescription="@string/recording"
+        android:layout_marginBottom="20dp"
+        style="@style/AppTheme"/>
+    <Button
+        android:id="@+id/recordingSubmit"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:text="@string/recordingSubmit"
+        android:textSize="18sp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="20dp"
+        style="@style/AppTheme"/>
+</LinearLayout>
