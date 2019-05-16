@@ -41,6 +41,6 @@ public class Verification {
         Pattern pattern = Pattern.compile(regex);
         //定义匹配器，验证密码
         Matcher matcher = pattern.matcher(password);
-        return !matcher.matches();
+        return matcher.matches();
     }
 }

@@ -94,7 +94,7 @@ public class RegisterActivity extends Activity {
                 } else {
                     if (!Verification.phoneNumber(phone)) {
                         Toast.makeText(RegisterActivity.this, "请输入正确的手机号！", Toast.LENGTH_SHORT).show();
-                    } else if (Verification.password(password)) {
+                    } else if (!Verification.password(password)) {
                         Toast.makeText(RegisterActivity.this, "请输入6-16位密码！", Toast.LENGTH_SHORT).show();
                     } else {
                         SMSSDK.getVerificationCode("86", phone);
@@ -111,7 +111,7 @@ public class RegisterActivity extends Activity {
                     Toast.makeText(RegisterActivity.this, "请输入验证码！", Toast.LENGTH_SHORT).show();
                 } else if (password.equals("")){
                     Toast.makeText(RegisterActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
-                } else if (Verification.password(password)){
+                } else if (!Verification.password(password)){
                     Toast.makeText(RegisterActivity.this, "请输入6-16位密码！", Toast.LENGTH_SHORT).show();
                 } else {
                     SMSSDK.submitVerificationCode("86", phone, code);
