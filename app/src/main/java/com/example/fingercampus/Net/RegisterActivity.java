@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.fingercampus.R;
-import com.example.fingercampus.Tools.Verification;
+import com.example.fingercampus.Tools.LogUtil;
+import com.example.fingercampus.Tools.VerificationUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,9 +92,9 @@ public class RegisterActivity extends Activity {
                 } else if (password.equals("")){
                     Toast.makeText(RegisterActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (!Verification.phoneNumber(phone)) {
+                    if (!VerificationUtil.phoneNumber(phone)) {
                         Toast.makeText(RegisterActivity.this, "请输入正确的手机号！", Toast.LENGTH_SHORT).show();
-                    } else if (!Verification.password(password)) {
+                    } else if (!VerificationUtil.password(password)) {
                         Toast.makeText(RegisterActivity.this, "请输入6-16位密码！", Toast.LENGTH_SHORT).show();
                     } else {
                         SMSSDK.getVerificationCode("86", phone);
@@ -111,7 +111,7 @@ public class RegisterActivity extends Activity {
                     Toast.makeText(RegisterActivity.this, "请输入验证码！", Toast.LENGTH_SHORT).show();
                 } else if (password.equals("")){
                     Toast.makeText(RegisterActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
-                } else if (!Verification.password(password)){
+                } else if (!VerificationUtil.password(password)){
                     Toast.makeText(RegisterActivity.this, "请输入6-16位密码！", Toast.LENGTH_SHORT).show();
                 } else {
                     SMSSDK.submitVerificationCode("86", phone, code);
@@ -149,14 +149,14 @@ public class RegisterActivity extends Activity {
                             }
                         } catch (JSONException e) {
                             Toast.makeText(getApplicationContext(), "请正确填写注册信息！", Toast.LENGTH_SHORT).show();
-                            Log.e(TAG, e.getMessage(), e);
+                            LogUtil.e(TAG, e.getMessage());
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), "请检查网络连接，并重试！", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, error.getMessage(), error);
+                LogUtil.e(TAG, error.getMessage());
             }
         }) {
             @Override

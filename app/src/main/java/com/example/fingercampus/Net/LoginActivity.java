@@ -20,8 +20,8 @@ import com.example.fingercampus.Constants;
 import com.example.fingercampus.Database.Dao;
 import com.example.fingercampus.MainActivity;
 import com.example.fingercampus.R;
-import com.example.fingercampus.Tools.Time;
-import com.example.fingercampus.Tools.Verification;
+import com.example.fingercampus.Tools.TimeUtil;
+import com.example.fingercampus.Tools.VerificationUtil;
 import com.mob.MobSDK;
 
 import org.json.JSONException;
@@ -83,7 +83,7 @@ public class LoginActivity extends Activity {
                 } else if (password.equals("")) {
                     Toast.makeText(LoginActivity.this, "请输入密码！", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (Verification.phoneNumber(account)) {
+                    if (VerificationUtil.phoneNumber(account)) {
                         loginButton.setClickable(false);
                         LoginRequest(account, password);
                     } else {
@@ -128,7 +128,7 @@ public class LoginActivity extends Activity {
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        String netDate = Time.getNetTime();
+                                        String netDate = TimeUtil.getNetTime();
                                         dao.uRecordInsert(usphone, netDate);
                                         Log.d(TAG, "rephone=" + usphone + " redate=" + netDate);
                                     }
