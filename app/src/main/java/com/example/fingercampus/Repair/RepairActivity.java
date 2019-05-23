@@ -2,6 +2,7 @@ package com.example.fingercampus.Repair;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
@@ -16,8 +17,11 @@ import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
+import android.graphics.Typeface;
 
 import com.example.fingercampus.R;
+
+import java.lang.reflect.Type;
 
 import static com.example.fingercampus.R.layout.picpopupwindow;
 import static com.example.fingercampus.R.layout.recordingpopuowindow;
@@ -41,6 +45,8 @@ public class RepairActivity extends Activity {
 
     private int REQUEST_CODE_TAKE_PHOTO = 1;
 
+    Typeface typeface;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +55,7 @@ public class RepairActivity extends Activity {
     }
 
     private void init() {
+        typeface = Typeface.createFromAsset(getAssets(),"iconfont/iconfont.ttf");
         Button back = findViewById(R.id.repair_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +107,12 @@ public class RepairActivity extends Activity {
                 descriptionText = description.getText().toString();
             }
         });
+
+        Button record = (Button)findViewById(R.id.repair_audio);
+        record.setTypeface(typeface);
+        Button album =(Button)findViewById(R.id.repair_picture);
+        album.setTypeface(typeface);
+        back.setTypeface(typeface);
     }
 
     private class ShowPopupWindow{
@@ -145,6 +158,8 @@ public class RepairActivity extends Activity {
             popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
             popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
             popupWindow.setTouchable(true);
+            Button recording = popupWindow.getContentView().findViewById(R.id.recording);
+            recording.setTypeface(typeface);
             popupWindow.setTouchInterceptor(new View.OnTouchListener() {
                 @SuppressLint("ClickableViewAccessibility")
                 @Override
@@ -165,8 +180,8 @@ public class RepairActivity extends Activity {
                     });
                     v.findViewById(R.id.recording).setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
-                            // TODO 做录音操作
+                        public void onClick(View view) {
+                            //TODO 做录音操作
                             Toast.makeText(RepairActivity.this, "录音", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -175,6 +190,7 @@ public class RepairActivity extends Activity {
             });
             popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.de_equare));
             popupWindow.showAsDropDown(view);
+
         }
     }
 }

@@ -13,7 +13,10 @@
             android:id="@+id/repair_back"
             android:layout_width="50dp"
             android:background="@color/secondColor"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:text="@string/return_icon"
+            android:textColor="#ffffff"
+            android:textSize="30sp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -76,14 +79,21 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="15dp"
                 android:background="#ffffff"
-                tools:ignore="ButtonStyle" />
+                tools:ignore="ButtonStyle"
+                android:text="@string/recording_icon"
+                android:layout_gravity="center"
+                android:textColor="#03ca74"/>
             <Button
                 android:id="@+id/repair_picture"
                 android:layout_marginStart="15dp"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="#ffffff"
-                tools:ignore="ButtonStyle" />
+                tools:ignore="ButtonStyle"
+                android:text="@string/album_icon"
+                android:layout_gravity="center"
+                android:textColor="#03ca74"
+                android:textSize="20sp"/>
         </LinearLayout>
     </RelativeLayout>
     <Button

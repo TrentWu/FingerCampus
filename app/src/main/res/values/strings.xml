@@ -26,4 +26,8 @@
     <string name="recordingCancel">取消</string>
     <string name="recordingSubmit">提交</string>
     <!--    <string name="icons">在此添加图标Unicode代码</string>-->
+    <string name="recording_icon">&#xe64a;</string>
+    <string name="album_icon">&#xe64b;</string>
+    <string name="return_icon">&#xe609;</string>
+    <string name="recording_icon1">&#xe610;</string>
 </resources>
