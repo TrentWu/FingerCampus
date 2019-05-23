@@ -3,7 +3,11 @@ package com.example.fingercampus.Tools;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Verification {
+/**
+ * 验证工具类
+ * 用于数据格式正确性的验证
+ */
+public class VerificationUtil {
 
     /**
      * 通过正则表达式验证手机号码

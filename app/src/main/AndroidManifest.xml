@@ -34,6 +34,9 @@
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".Repair.RepairActivity"
             tools:ignore="InnerclassSeparator" />
+        <activity android:name=".Attendance.AttendanceActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".PermissionsActivity" />
     </application>
 
 </manifest>
