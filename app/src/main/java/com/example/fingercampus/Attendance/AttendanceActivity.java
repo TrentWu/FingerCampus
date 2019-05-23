@@ -1,4 +1,4 @@
-package com.example.fingercampus.Attendence;
+package com.example.fingercampus.Attendance;
 
 import android.app.Activity;
 import android.os.Bundle;
