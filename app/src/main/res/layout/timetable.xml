@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,8 +7,16 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="732dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints">
 
         <LinearLayout
@@ -26,137 +33,847 @@
                 app:popupTheme="@style/AlertDialog.AppCompat.Light"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-            <!--星期条-->
-            <!--课程表-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="#81FCFAFA">
-
-                <TextView
-                    android:layout_width="110px"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="节/周" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="周一" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="周二" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="周三" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="周四" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="周五" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="周六" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="周日" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <!--左侧"节数"布局-->
                 <LinearLayout
                     android:id="@+id/left_view_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" />
-                <!--星期一到星期天的布局-->
-                <RelativeLayout
-                    android:id="@+id/monday"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
+                    android:orientation="vertical">
 
-                <RelativeLayout
-                    android:id="@+id/tuesday"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
+                    <!--节周-->
 
-                <RelativeLayout
-                    android:id="@+id/wednesday"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
+                    <TextView
+                        android:layout_width="110px"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:text="节/周" />
 
-                <RelativeLayout
-                    android:id="@+id/thursday"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
+                    <TextView
+                        android:layout_width="110px"
+                        android:layout_height="107.5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="一" />
 
-                <RelativeLayout
-                    android:id="@+id/friday"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
+                    <TextView
+                        android:layout_width="110px"
+                        android:layout_height="107.5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="二" />
 
-                <RelativeLayout
-                    android:id="@+id/saturday"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
+                    <TextView
+                        android:layout_width="110px"
+                        android:layout_height="107.5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="三" />
 
-                <RelativeLayout
-                    android:id="@+id/weekday"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" />
+                    <TextView
+                        android:layout_width="110px"
+                        android:layout_height="107.5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="四" />
+
+                    <TextView
+                        android:layout_width="110px"
+                        android:layout_height="107.5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="五" />
+
+                    <TextView
+                        android:layout_width="110px"
+                        android:layout_height="107.5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="六" />
+                </LinearLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <!--星期条-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:background="#81FCFAFA">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="周一" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="周二" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="周三" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="周四" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="周五" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="周六" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="周日" />
+                            </LinearLayout>
+
+                            <!--课程表-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+
+                                <RelativeLayout
+                                    android:id="@+id/monday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/bt1.1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="533dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt1.2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="107.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="428dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt1.3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="215dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="320dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt1.4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="322.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="211dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt1.5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="430dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="105dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt1.6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="537.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="0dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/tuesday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/bt2.6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="537.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="0dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt2.5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="430dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="105dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt2.4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="322.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="211dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt2.3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="215dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="320dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt2.2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="107.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="428dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt2.1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="533dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/wednesday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/bt3.6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="537.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="0dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt3.5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="430dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="105dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt3.4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="322.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="211dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt3.3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="215dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="320dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt3.2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="107.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="428dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt3.1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="533dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/thursday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/bt4.6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="537.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="0dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt4.5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="430dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="105dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt4.4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="322.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="211dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt4.3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="215dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="320dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt4.2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="107.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="428dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt4.1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="533dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/friday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/bt5.6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="537.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="0dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt5.5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="430dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="105dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt5.4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="322.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="211dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt5.3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="215dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="320dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt5.2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="107.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="428dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt5.1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="533dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/saturday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/bt6.6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="537.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="0dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt6.5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="430dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="105dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt6.4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="322.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="211dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt6.3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="215dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="320dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt6.2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="107.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="428dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt6.1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="533dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/sunday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="0dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/bt7.6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="537.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="0dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt7.5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="430dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="105dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt7.4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="322.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="211dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt7.3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="215dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="320dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt7.2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="107.5dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="428dp"
+                                        android:background="@color/secondColor"
+                                        android:text="Button" />
+
+                                    <Button
+                                        android:id="@+id/bt7.1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="107dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_marginEnd="0dp"
+                                        android:layout_marginBottom="533dp"
+                                        android:background="@color/firstColor"
+                                        android:text="Button" />
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                </ScrollView>
+
+
             </LinearLayout>
 
         </LinearLayout>
@@ -165,28 +882,11 @@
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="返回"
-            android:textSize="30dp"
             android:background="@color/firstColor"
-            android:textColor="#ffffff"/>
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="30dp" />
 
     </FrameLayout>
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/firstColor"
-        android:text="添加"
-        android:textColor="#ffffff"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>
