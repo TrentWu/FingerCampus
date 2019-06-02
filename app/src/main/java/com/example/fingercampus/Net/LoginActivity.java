@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +42,7 @@ public class LoginActivity extends Activity {
     private Button loginButton;
     private String TAG = "LoginActivity";
     private Dao dao;
+    private long exitTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class LoginActivity extends Activity {
         SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
         if (sharedPreferences.getString(Constants.RECORD.rephone, null) != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
         }
         //使用阿里图标库
         setContentView(R.layout.activity_start);
@@ -137,6 +140,7 @@ public class LoginActivity extends Activity {
                                 Toast.makeText(LoginActivity.this, "欢迎你，" + usphone + "！", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 password_edit.setText(null);
+                                finish();
                             } else {
                                 loginButton.setClickable(true);
                                 Toast.makeText(LoginActivity.this, "手机号或密码错误！", Toast.LENGTH_SHORT).show();
@@ -172,6 +176,21 @@ public class LoginActivity extends Activity {
 
         //将请求添加到队列中
         requestQueue.add(request);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            if ((System.currentTimeMillis()-exitTime) > 2000){
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

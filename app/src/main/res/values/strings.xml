@@ -38,4 +38,7 @@
     <string name="album_icon">&#xe64b;</string>
     <string name="return_icon">&#xe609;</string>
     <string name="recording_icon1">&#xe610;</string>
+    <string name="user">个人中心</string>
+    <string name="main">主页</string>
+    <string name="toolbar_more">更多</string>
 </resources>
