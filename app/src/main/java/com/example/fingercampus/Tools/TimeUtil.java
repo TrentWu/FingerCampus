@@ -9,7 +9,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Time {
+/**
+ * 时间工具类
+ * 用于时间的计算与获取
+ */
+public class TimeUtil {
     /**
      * 获取网络时间
      * 需要开子线程

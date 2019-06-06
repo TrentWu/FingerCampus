@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.fingercampus.Constants;
+import com.example.fingercampus.Tools.LogUtil;
 
 /**
  * 数据库操作类
@@ -33,7 +33,7 @@ public class Dao {
         contentValues.put(Constants.RECORD.rephone, rephone);
         contentValues.put(Constants.RECORD.redate, redate);
         long reid = databaseHelper.insert(Constants.TABLE_NAME.RECORD, null, contentValues);
-        Log.d(TAG, "reid=" + reid + "rephone=" + rephone + " redate=" + redate);
+        LogUtil.d(TAG, "reid=" + reid + "rephone=" + rephone + " redate=" + redate);
     }
 
     /**
@@ -46,7 +46,7 @@ public class Dao {
         if (cursor.moveToLast()) {
             String rephone = cursor.getString(1);
             cursor.close();
-            Log.d(TAG, "rephone=" + rephone);
+            LogUtil.d(TAG, "rephone=" + rephone);
             return rephone;
         }
         cursor.close();

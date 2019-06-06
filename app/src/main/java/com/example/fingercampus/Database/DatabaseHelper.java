@@ -4,9 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.example.fingercampus.Constants;
+import com.example.fingercampus.Tools.LogUtil;
 
 /**
  * 数据库管理类
@@ -45,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //创建时的回调
-        Log.d(TAG, "创建数据库……");
+        LogUtil.d(TAG, "创建数据库……");
         //创建字段
         String sqlStr =
                 "CREATE TABLE " + Constants.TABLE_NAME.RECORD +
@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //升级数据库时的回调
-        Log.d(TAG, "升级数据库……");
+        LogUtil.d(TAG, "升级数据库……");
 
     }
 }

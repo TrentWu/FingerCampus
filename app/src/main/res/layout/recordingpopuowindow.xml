@@ -6,8 +6,8 @@
     android:gravity="center_horizontal">
     <Button
         android:id="@+id/recordingCancel"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:text="@string/recordingCancel"
         android:textSize="18sp"
         android:layout_marginEnd="50dp"
@@ -18,14 +18,17 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:backgroundTint="@color/firstColor"
-        android:background="@drawable/de_equare"
+        android:background="@drawable/round"
         android:contentDescription="@string/recording"
-        android:layout_marginBottom="20dp"
+        android:text="@string/recording_icon"
+        android:layout_gravity="center"
+        android:textSize="40sp"
+        android:textColor="#ffffff"
         style="@style/AppTheme"/>
     <Button
         android:id="@+id/recordingSubmit"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:text="@string/recordingSubmit"
         android:textSize="18sp"
         android:layout_marginStart="50dp"

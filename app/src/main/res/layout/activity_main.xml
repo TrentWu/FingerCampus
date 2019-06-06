@@ -1,27 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
-    <Button
-        android:text="@string/logout"
-        android:textColor="@color/firstColor"
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:text="@string/repair"
-        android:textColor="@color/firstColor"
-        android:id="@+id/repair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00000000"
-        tools:ignore="MissingConstraints" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent">
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/toolbar_user"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="start"
+            android:background="@drawable/ic_user"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main"
+            android:layout_gravity="center"
+            android:textSize="22sp"
+            android:textStyle="normal"
+            android:textColor="#FFFFFF"/>
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <GridLayout
+            android:id="@+id/toolGridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:alignmentMode="alignBounds">
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_columnWeight="1"
+                android:layout_margin="1dp"
+                android:layout_height="160dp"
+                android:layout_gravity="fill"
+                android:background="#25C6FC"
+                android:text="@string/logout"
+                android:textSize="40sp"
+                android:textColor="#EDF0AA" />
+            <Button
+                android:id="@+id/repair"
+                android:layout_columnWeight="1"
+                android:layout_margin="1dp"
+                android:layout_height="160dp"
+                android:layout_gravity="fill"
+                android:background="#FF534D"
+                android:text="@string/repair"
+                android:textSize="40sp"
+                android:textColor="#00FFBB" />
+        </GridLayout>
+
+    </ScrollView>
+
+</LinearLayout>

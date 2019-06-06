@@ -4,25 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <LinearLayout
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_repair"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/firstColor"
-        >
+        android:layout_height="40dp"
+        android:background="?attr/colorPrimary">
+
         <Button
             android:id="@+id/repair_back"
-            android:layout_width="50dp"
-            android:background="@color/secondColor"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:layout_width="match_parent"
+            android:layout_width="24dp"
+            android:background="#00000000"
             android:layout_height="match_parent"
-            android:text="@string/back"
+            android:layout_gravity="start"
+            android:text="@string/return_icon"
+            android:textColor="#ffffff"
+            android:textSize="22sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="@string/repair"
             android:textColor="#ffffff"
             android:gravity="center_vertical"
-            android:textSize="40sp"
-            android:textStyle="bold"/>
-    </LinearLayout>
+            android:textSize="22sp"
+            android:textStyle="normal"/>
+
+    </android.support.v7.widget.Toolbar>
+
     <Spinner
         android:id="@+id/repair_select"
         android:layout_width="250dp"
@@ -41,14 +50,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
-    <EditText
-        android:id="@+id/repair_des"
-        android:layout_width="250dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:hint="@string/repair_des"
-        android:gravity="top|start"
-        tools:ignore="Autofill,TextFields" />
+        <EditText
+            android:id="@+id/repair_des"
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:hint="@string/repair_des"
+            android:gravity="top|start"
+            tools:ignore="Autofill,TextFields" />
         <Button
             android:id="@+id/repair_plus"
             android:layout_width="20dp"
@@ -76,14 +85,21 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="15dp"
                 android:background="#ffffff"
-                tools:ignore="ButtonStyle" />
+                tools:ignore="ButtonStyle"
+                android:text="@string/recording_icon"
+                android:layout_gravity="center"
+                android:textColor="#03ca74"/>
             <Button
                 android:id="@+id/repair_picture"
                 android:layout_marginStart="15dp"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="#ffffff"
-                tools:ignore="ButtonStyle" />
+                tools:ignore="ButtonStyle"
+                android:text="@string/album_icon"
+                android:layout_gravity="center"
+                android:textColor="#03ca74"
+                android:textSize="20sp"/>
         </LinearLayout>
     </RelativeLayout>
     <Button
