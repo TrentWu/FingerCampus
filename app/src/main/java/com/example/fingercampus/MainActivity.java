@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.fingercampus.Database.Dao;
 import com.example.fingercampus.Net.LoginActivity;
 import com.example.fingercampus.Repair.RepairActivity;
+import com.example.fingercampus.Timetable.TimetableActivity;
 import com.example.fingercampus.Tools.LogUtil;
 import com.example.fingercampus.Tools.WindowManagerUtil;
 
@@ -80,9 +81,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()){
-                case R.id.toolbar_user:
-                    Toast.makeText(MainActivity.this, "个人中心", Toast.LENGTH_SHORT).show();
-                    break;
                 default:
                     Toast.makeText(MainActivity.this, "啦啦啦", Toast.LENGTH_SHORT).show();
                     break;

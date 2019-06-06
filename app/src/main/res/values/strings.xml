@@ -14,7 +14,6 @@
     <string name="tip2">请输入6到16位密码</string>
     <string name="tip3">验证码</string>
     <string name="clicktoget">点击获取</string>
-    <string name="back">返回</string>
     <string name="repair">报修</string>
     <string name="repair_position">请输入报修地点</string>
     <string name="repair_des">请输入问题描述</string>
@@ -41,4 +40,6 @@
     <string name="user">个人中心</string>
     <string name="main">主页</string>
     <string name="toolbar_more">更多</string>
+    <string name="back">返回</string>
+    <string name="timetable">课程表</string>
 </resources>

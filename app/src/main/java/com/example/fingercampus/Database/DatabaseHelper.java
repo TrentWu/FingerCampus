@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @ version   版本号
      */
     //将构造方法私有化，防止被外部访问
-    private DatabaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, Constants.DATABASE_NAME, null, Constants.VERSION_CODE);
     }
 

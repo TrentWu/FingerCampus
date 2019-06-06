@@ -60,6 +60,17 @@
                 android:text="@string/repair"
                 android:textSize="40sp"
                 android:textColor="#00FFBB" />
+
+            <Button
+                android:id="@+id/timetable"
+                android:layout_height="160dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="1dp"
+                android:background="#FF534D"
+                android:text="课程表"
+                android:textColor="#00FFBB"
+                android:textSize="40sp" />
         </GridLayout>
 
     </ScrollView>

@@ -46,6 +46,9 @@
         <activity android:name=".Attendance.AttendanceActivity"
             tools:ignore="InnerclassSeparator" >
         </activity>
+        <activity android:name=".Timetable.TimetableActivity"
+            tools:ignore="InnerclassSeparator" >
+        </activity>
         <activity android:name=".PermissionsActivity" />
     </application>
 
