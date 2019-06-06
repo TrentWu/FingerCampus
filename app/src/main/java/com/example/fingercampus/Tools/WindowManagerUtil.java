@@ -4,6 +4,10 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+/**
+ * 屏幕管理工具类
+ * 用于获取屏幕尺寸、分辨率等参数
+ */
 public class WindowManagerUtil {
 
     private Context context;

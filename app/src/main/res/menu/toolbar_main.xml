@@ -2,10 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/toolbar_more"
-        android:title="@string/toolbar_more"
-        android:icon="@drawable/ic_more"
-        app:showAsAction="always" />
+    <group>
+        <item
+            android:id="@+id/toolbar_attendance"
+            android:title="@string/toolbar_attendance"
+            android:orderInCategory="90"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/toolbar_timetable"
+            android:title="@string/toolbar_timetable"
+            android:orderInCategory="100"
+            app:showAsAction="never"/>
+    </group>
 
 </menu>
