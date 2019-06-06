@@ -41,4 +41,7 @@
     <string name="user">个人中心</string>
     <string name="main">主页</string>
     <string name="toolbar_more">更多</string>
+    <string name="toolbar_scan">扫一扫</string>
+    <string name="toolbar_timetable">课程表</string>
+    <string name="toolbar_attendance">签到</string>
 </resources>
