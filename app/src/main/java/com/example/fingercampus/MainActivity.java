@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, AttendanceActivity.class));
                         break;
                     case R.id.toolbar_timetable:
-                        //TODO 跳转到课程表活动
+                        startActivity(new Intent(MainActivity.this, TimetableActivity.class));
                         Toast.makeText(MainActivity.this, "课程表", Toast.LENGTH_SHORT).show();
                         break;
                     default:
