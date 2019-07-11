@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -47,81 +46,78 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:text="\n课程名:" />
 
                 <EditText
                     android:id="@+id/courseName"
                     android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:imeOptions="actionNext"
                     android:singleLine="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:text="\n星期:" />
 
-                <EditText
-                    android:id="@+id/week"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:inputType="number" />
+                <Spinner
+                    android:id="@+id/weekChoose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:entries="@array/repair_type" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:text="\n开始节次:" />
 
-                <EditText
-                    android:id="@+id/classBegin"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:inputType="number" />
+                <Spinner
+                    android:id="@+id/beginChoose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:entries="@array/repair_type" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:text="\n结束节次:" />
 
-                <EditText
-                    android:id="@+id/classEnd"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:inputType="number" />
+                <Spinner
+                    android:id="@+id/endChoose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:entries="@array/repair_type" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:text="\n教师:" />
 
                 <EditText
                     android:id="@+id/teacher"
                     android:layout_width="90dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:imeOptions="actionNext"
                     android:singleLine="true" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:text="\n教室:" />
 
                 <EditText
                     android:id="@+id/classroom"
                     android:layout_width="90dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:imeOptions="actionNext"
                     android:singleLine="true" />
@@ -147,7 +143,5 @@
             tools:ignore="MissingConstraints" />
 
     </LinearLayout>
-
-
 
 </android.support.constraint.ConstraintLayout>
