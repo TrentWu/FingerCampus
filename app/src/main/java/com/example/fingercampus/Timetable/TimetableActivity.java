@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.example.fingercampus.Database.DatabaseHelper;
 import com.example.fingercampus.R;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class TimetableActivity extends Activity {
     private RelativeLayout day;
 
     //SQLite Helper类
-    private DatabaseHelper databaseHelper = new DatabaseHelper(this, "database.db", null, 1);
+    //private DatabaseHelper databaseHelper = new DatabaseHelper(this, "database.db", null, 1);
 
     int currentCoursesNumber = 0;
     int maxCoursesNumber = 0;
@@ -39,6 +40,7 @@ public class TimetableActivity extends Activity {
         //工具条
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         //从数据库读取数据
         loadData();
@@ -107,6 +109,9 @@ public class TimetableActivity extends Activity {
         typeface = Typeface.createFromAsset(getAssets(),"iconfont/iconfont.ttf");
         Button back = findViewById(R.id.back);
         back.setTypeface(typeface);
+        //调用图标
+        TextView add=findViewById(R.id.add);
+        add.setTypeface(typeface);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
