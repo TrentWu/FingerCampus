@@ -7,20 +7,27 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toolbar;
+import android.widget.Toast;
 
+import com.example.fingercampus.Attendance.AttendanceActivity;
 import com.example.fingercampus.Database.DatabaseHelper;
+import com.example.fingercampus.MainActivity;
 import com.example.fingercampus.R;
+import com.example.fingercampus.Repair.RepairActivity;
 
 import java.util.ArrayList;
 
-public class TimetableActivity extends Activity {
+public class TimetableActivity extends AppCompatActivity {
 
     Typeface typeface;
 
@@ -32,6 +39,17 @@ public class TimetableActivity extends Activity {
 
     int currentCoursesNumber = 0;
     int maxCoursesNumber = 0;
+
+    /**
+     * 绑定res/menu中的菜单到活动
+     * @param menu  需要绑定的菜单
+     * @return      处理结果
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_timetable, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +65,7 @@ public class TimetableActivity extends Activity {
 //        loadData();
 //
         init();
+        initToolbar();
     }
 
 //    //从数据库加载数据
@@ -107,7 +126,7 @@ public class TimetableActivity extends Activity {
 //        }
 //    }
     private void init() {
-        typeface = Typeface.createFromAsset(getAssets(),"iconfont/iconfont.ttf");
+        typeface = Typeface.createFromAsset(getAssets(),"iconfont.ttf");
         Button back = findViewById(R.id.back);
         back.setTypeface(typeface);
         //调用图标
@@ -119,17 +138,32 @@ public class TimetableActivity extends Activity {
                 finish();
             }
         });
-//        typeface = Typeface.createFromAsset(getAssets(),"iconfont/iconfontadd.ttf");
-//        Button add = findViewById(R.id.addCourse);
-//        add.setTypeface(typeface);
-//        //调用图标
-//        TextView addc=findViewById(R.id.add);
-//        add.setTypeface(typeface);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TimetableActivity.this,AddcourseActivity.class));
-//            }
-//        });
+
+        Button bt = findViewById(R.id.bt1_1);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TimetableActivity.this, ShowcourseActivity.class));
+            }
+        });
     }
+    private void initToolbar(){
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.addCourse:
+                        Toast.makeText(TimetableActivity.this, "添加课程", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(TimetableActivity.this,AddcourseActivity.class));
+                        break;
+                }
+                return true;
+            }
+        };
+        toolbar.setOnMenuItemClickListener(onMenuItemClick);
+    }
+
 }

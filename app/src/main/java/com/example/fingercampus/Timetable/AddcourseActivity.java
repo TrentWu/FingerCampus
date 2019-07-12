@@ -15,6 +15,9 @@ import com.example.fingercampus.MainActivity;
 import com.example.fingercampus.R;
 
 public class AddcourseActivity extends Activity {
+
+    Typeface typeface;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +51,8 @@ public class AddcourseActivity extends Activity {
 //                    intent.putExtra("course", course);
 //
 //                    setResult(Activity.RESULT_OK, intent);
-//                    finish();
-//                }
+                      finish();
+//                 }
             }
         });
     }

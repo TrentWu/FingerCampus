@@ -56,6 +56,9 @@
         <activity android:name=".Timetable.AddcourseActivity"
             tools:ignore="InnerclassSeparator" >
         </activity>
+        <activity android:name=".Timetable.ShowcourseActivity"
+            tools:ignore="InnerclassSeparator" >
+        </activity>
         <activity android:name=".PermissionsActivity" />
     </application>
 
