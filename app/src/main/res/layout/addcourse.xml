@@ -24,7 +24,7 @@
         <ScrollView
             android:id="@+id/sl2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="500dp"
             android:layout_gravity="center"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -51,12 +51,45 @@
                     android:text="\n课程名:" />
 
                 <EditText
-                    android:id="@+id/courseName"
+                    android:id="@+id/csname"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:imeOptions="actionNext"
                     android:singleLine="true" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="\n开始周次:" />
+
+                <EditText
+                    android:id="@+id/csbweek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:hint="请输入数字"
+                    android:digits="1234567890"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="\n结束周次:" />
+
+                <EditText
+                    android:id="@+id/cseweek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:hint="请输入数字"
+                    android:digits="1234567890"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -65,10 +98,10 @@
                     android:text="\n星期:" />
 
                 <Spinner
-                    android:id="@+id/weekChoose"
+                    android:id="@+id/csday"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:entries="@array/repair_type" />
+                    android:entries="@array/day_type1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -77,10 +110,10 @@
                     android:text="\n开始节次:" />
 
                 <Spinner
-                    android:id="@+id/beginChoose"
+                    android:id="@+id/csbtime"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:entries="@array/repair_type" />
+                    android:entries="@array/course_time_type" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -89,24 +122,10 @@
                     android:text="\n结束节次:" />
 
                 <Spinner
-                    android:id="@+id/endChoose"
+                    android:id="@+id/csetime"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:entries="@array/repair_type" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:text="\n教师:" />
-
-                <EditText
-                    android:id="@+id/teacher"
-                    android:layout_width="90dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true" />
+                    android:entries="@array/course_time_type" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -115,12 +134,27 @@
                     android:text="\n教室:" />
 
                 <EditText
-                    android:id="@+id/classroom"
+                    android:id="@+id/clrid"
                     android:layout_width="90dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:imeOptions="actionNext"
                     android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="\n教师:" />
+
+                <EditText
+                    android:id="@+id/tcid"
+                    android:layout_width="90dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true" />
+
             </LinearLayout>
         </ScrollView>
 

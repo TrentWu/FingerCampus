@@ -53,7 +53,7 @@
         <activity android:name=".Timetable.TimetableActivity"
             tools:ignore="InnerclassSeparator" >
         </activity>
-        <activity android:name=".Timetable.AddcourseActivity"
+        <activity android:name=".Timetable.AddCourseActivity"
             tools:ignore="InnerclassSeparator" >
         </activity>
         <activity android:name=".Timetable.ShowcourseActivity"
