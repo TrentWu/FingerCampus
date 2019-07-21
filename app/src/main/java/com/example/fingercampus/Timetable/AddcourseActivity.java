@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddcourseActivity extends Activity {
+public class AddCourseActivity extends Activity {
 
     private Spinner select_csday;
     private Spinner select_csbweek;
@@ -103,7 +103,7 @@ public class AddcourseActivity extends Activity {
                 String classroom = classroom_edit.getText().toString().trim();
                 String teacher = teacher_edit.getText().toString().trim();
                 if (csname==null||csname.isEmpty() || csbweek==null||csbweek.isEmpty() || cseweek==null||cseweek.isEmpty() || csday==null||csday.isEmpty() || csbtime==null||csbtime.isEmpty() || csetime==null||csetime.isEmpty()){
-                    Toast.makeText(AddcourseActivity.this, "请输入完整信息！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddCourseActivity.this, "请输入完整信息！", Toast.LENGTH_SHORT).show();
                 }else{
                     TimetableRequest(csname,csbweek,cseweek,csday,csbtime,csetime,classroom,teacher);
                 }
@@ -144,16 +144,16 @@ public class AddcourseActivity extends Activity {
                     JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");  //注③
                     String result = jsonObject.getString("Result");  //注④
                     if (result.equals("success")) {  //注⑤
-                        Toast.makeText(AddcourseActivity.this, "导入成功！" , Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(AddcourseActivity.this, TimetableActivity.class));
+                        Toast.makeText(AddCourseActivity.this, "导入成功！" , Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(AddCourseActivity.this, TimetableActivity.class));
                         finish();
                     }
                     else{
-                        Toast.makeText(AddcourseActivity.this, "导入失败！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddCourseActivity.this, "导入失败！", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     finishButton.setClickable(true);
-                    Toast.makeText(AddcourseActivity.this, "无网络连接", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddCourseActivity.this, "无网络连接", Toast.LENGTH_SHORT).show();
                     Log.e(TAG, e.getMessage(), e);
                 }
             }
@@ -161,7 +161,7 @@ public class AddcourseActivity extends Activity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 finishButton.setClickable(true);
-                Toast.makeText(AddcourseActivity.this, "请稍后重试", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddCourseActivity.this, "请稍后重试", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, error.getMessage(), error);
             }
         }) {
