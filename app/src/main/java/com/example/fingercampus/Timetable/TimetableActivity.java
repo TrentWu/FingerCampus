@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.fingercampus.R;
@@ -19,8 +18,6 @@ public class TimetableActivity extends AppCompatActivity {
 
     Typeface typeface;
     private Button back;
-    //星期几
-    private RelativeLayout day;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,12 +73,4 @@ public class TimetableActivity extends AppCompatActivity {
         };
         toolbar.setOnMenuItemClickListener(onMenuItemClick);
     }
-//    private void show(int phone,String csbtime,String csetime){
-//
-//        int csid=
-//
-//
-//
-//    }
-
 }
