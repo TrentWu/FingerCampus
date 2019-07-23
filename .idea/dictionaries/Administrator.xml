@@ -2,10 +2,23 @@
   <dictionary name="Administrator">
     <words>
       <w>autofocus</w>
+      <w>clrid</w>
+      <w>clrname</w>
+      <w>csbtime</w>
+      <w>csbweek</w>
+      <w>csday</w>
+      <w>csetime</w>
+      <w>cseweek</w>
+      <w>csname</w>
+      <w>cwbtime</w>
+      <w>cwetime</w>
       <w>fingercampus</w>
+      <w>iconfont</w>
       <w>redate</w>
       <w>rephone</w>
       <w>smssdk</w>
+      <w>tcid</w>
+      <w>tcname</w>
       <w>uspassword</w>
       <w>usphone</w>
       <w>zxing</w>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/sl2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="\n课程名:"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/csname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:imeOptions="actionNext"
+                android:singleLine="true" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="\n开始周次:"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="第"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+                <Spinner
+                    android:id="@+id/csbweek"
+                    android:layout_width="86dp"
+                    android:layout_height="40dp"
+                    android:entries="@array/course_week_type" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:text="周"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="\n结束周次:"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="第"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+                <Spinner
+                    android:id="@+id/cseweek"
+                    android:layout_width="86dp"
+                    android:layout_height="40dp"
+                    android:entries="@array/course_week_type" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:text="周"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="\n星期:"
+                tools:ignore="HardcodedText" />
+
+            <Spinner
+                android:id="@+id/csday"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:entries="@array/day_type1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="\n开始节次:"
+                tools:ignore="HardcodedText" />
+
+            <Spinner
+                android:id="@+id/csbtime"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:entries="@array/course_time_type" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="\n结束节次:"
+                tools:ignore="HardcodedText" />
+
+            <Spinner
+                android:id="@+id/csetime"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:entries="@array/course_time_type" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="\n教室:"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/clrid"
+                android:imeOptions="actionNext"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:singleLine="true"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="\n教师:"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/tcid"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:inputType="text" />
+            <Button
+                android:id="@+id/finish"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="完成"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.511"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sl2"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="HardcodedText,MissingConstraints" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

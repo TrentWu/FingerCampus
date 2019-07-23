@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    //这里添加报修的类型
+<!--    这里添加报修的类型-->
     <string-array name="repair_type">
         <item>选择报修类型</item>
         <item>1</item>
