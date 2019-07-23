@@ -2,6 +2,7 @@ package com.example.fingercampus.Timetable;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fingercampus.Constants;
+import com.example.fingercampus.MainActivity;
+import com.example.fingercampus.Net.LoginActivity;
 import com.example.fingercampus.R;
 import com.example.fingercampus.Tools.LogUtil;
 
@@ -39,11 +43,16 @@ public class AddCourseActivity extends Activity {
     private EditText teacher_edit;
     private String TAG = "AddCourseActivity";
 
+    private String usphone;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timetable_addcourse);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
+        usphone = sharedPreferences.getString(Constants.RECORD.rephone, null);
 
         select_csday = findViewById(R.id.csday);
         select_csbtime = findViewById(R.id.csbtime);
@@ -181,6 +190,7 @@ public class AddCourseActivity extends Activity {
                 params.put("csetime", csetime);
                 params.put("clrname", clrname);
                 params.put("tcname", tcname);
+                params.put("usphone", usphone);
                 return params;
             }
         };
