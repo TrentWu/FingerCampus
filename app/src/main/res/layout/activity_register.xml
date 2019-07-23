@@ -14,77 +14,83 @@
         android:textSize="30sp"
         android:elevation="10dp"
         tools:ignore="MissingConstraints" />
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@color/firstColor"
-        >
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_height="match_parent">
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:hint="@string/tip1"
-            android:background="@drawable/edit_round"
-            android:elevation="20dp"
-            android:inputType="number"
-            android:layout_marginBottom="10dp"
-            tools:ignore="Autofill,TextFields" />
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_below="@+id/phone"
-            android:layout_gravity="center"
-            android:hint="@string/tip2"
-            android:background="@drawable/edit_round"
-            android:elevation="20dp"
-            android:inputType="textPassword"
-            tools:ignore="Autofill" />
-        <EditText
-            android:id="@+id/code"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/password"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:inputType="number"
-            android:hint="@string/tip3"
-            android:background="@drawable/edit_round"
-            android:elevation="20dp"
-            tools:ignore="Autofill,TextFields" />
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_round"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:hint="@string/tip1"
+                android:inputType="number"
+                tools:ignore="Autofill,TextFields" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/phone"
+                android:layout_gravity="center"
+                android:background="@drawable/edit_round"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:hint="@string/tip2"
+                android:inputType="textPassword"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/code"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/password"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_round"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:hint="@string/tip3"
+                android:inputType="number"
+                tools:ignore="Autofill,TextFields" />
+
             <Button
                 android:id="@+id/btncode"
                 android:layout_width="120dp"
                 android:layout_height="30dp"
                 android:layout_below="@+id/password"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/code"
                 android:background="#00000000"
                 android:elevation="0dp"
-                android:textColor="#ffffff"
-                android:layout_marginStart="20dp"
                 android:text="@string/clicktoget"
-                android:layout_toEndOf="@+id/code"
-                />
+                android:textColor="#ffffff" />
+
             <Button
                 android:id="@+id/register_f"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_below="@+id/code"
-                android:layout_marginTop="40dp"
                 android:layout_marginStart="100dp"
-                android:text="@string/register_t"
-                android:textColor="@color/firstColor"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/round"
-                />
+                android:text="@string/register_t"
+                android:textColor="@color/firstColor" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

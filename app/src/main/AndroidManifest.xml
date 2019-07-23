@@ -4,9 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.fingercampus">
 
+    <supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:resizeable="true"
+        android:anyDensity="true" />
+
     <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!--调用相机权限-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -31,8 +45,21 @@
         <activity android:name=".Net.RegisterActivity"
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".Repair.RepairActivity"
-            tools:ignore="InnerclassSeparator" />
-        <activity android:name=".Attendence.AttendanceActivity" />
+            tools:ignore="InnerclassSeparator" >
+        </activity>
+        <activity android:name=".Attendance.AttendanceActivity"
+            tools:ignore="InnerclassSeparator" >
+        </activity>
+        <activity android:name=".Timetable.TimetableActivity"
+            tools:ignore="InnerclassSeparator" >
+        </activity>
+        <activity android:name=".Timetable.AddCourseActivity"
+            tools:ignore="InnerclassSeparator" >
+        </activity>
+        <activity android:name=".Timetable.ShowcourseActivity"
+            tools:ignore="InnerclassSeparator" >
+        </activity>
+        <activity android:name=".PermissionsActivity" />
     </application>
 
 </manifest>
