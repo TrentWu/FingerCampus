@@ -55,9 +55,6 @@ public class LoginActivity extends Activity {
         }
         //使用阿里图标库
         setContentView(R.layout.activity_start);
-//        Typeface typeface=Typeface.createFromAsset(getAssets(),"iconfont");//添加字体包
-//        TextView textView=findViewById(R.id.test);
-//        textView.setTypeface(typeface);
         init();
     }
 
@@ -165,8 +162,6 @@ public class LoginActivity extends Activity {
                 params.put("RequestType", tag);
                 params.put("usphone", usphone);  //注⑥
                 params.put("uspassword", uspassword);
-                Log.d(TAG, "usphone=" + usphone);
-                Log.d(TAG, "uspassword=" + uspassword);
                 return params;
             }
         };

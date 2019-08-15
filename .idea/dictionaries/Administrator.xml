@@ -1,9 +1,11 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Administrator">
     <words>
+      <w>alreadyattendance</w>
       <w>autofocus</w>
       <w>clrid</w>
       <w>clrname</w>
+      <w>coursename</w>
       <w>csbtime</w>
       <w>csbweek</w>
       <w>csday</w>
@@ -14,6 +16,7 @@
       <w>cwetime</w>
       <w>fingercampus</w>
       <w>iconfont</w>
+      <w>noresult</w>
       <w>redate</w>
       <w>rephone</w>
       <w>smssdk</w>
