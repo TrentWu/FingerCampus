@@ -6,4 +6,5 @@
     <color name="firstColor">#03ca74</color>
     <color name="firstColorDark">#03ba74</color>
     <color name="secondColor">#50C0DA</color>
+    <color name="colorless">#00000000</color>
 </resources>
