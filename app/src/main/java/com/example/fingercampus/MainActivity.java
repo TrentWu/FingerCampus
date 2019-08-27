@@ -25,6 +25,7 @@ import com.example.fingercampus.Tools.LogUtil;
 public class MainActivity extends AppCompatActivity {
 
     private long exitTime = 0;
+    private String usphone;
 
     /**
      * 绑定res/menu中的菜单到活动
@@ -69,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
         repair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RepairActivity.class));
+                Intent intent = getIntent();
+                usphone = intent.getStringExtra("usphone");
+                intent = new Intent(MainActivity.this,RepairActivity.class);
+                intent.putExtra("usphone",usphone);
+                startActivity(intent);
             }
         });
     }

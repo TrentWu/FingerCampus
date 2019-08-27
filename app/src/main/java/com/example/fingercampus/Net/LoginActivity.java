@@ -135,7 +135,9 @@ public class LoginActivity extends Activity {
                                 }).start();
                                 loginButton.setClickable(true);
                                 Toast.makeText(LoginActivity.this, "欢迎你，" + usphone + "！", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                intent.putExtra("usphone",usphone);
+                                startActivity(intent);
                                 password_edit.setText(null);
                                 finish();
                             } else {
