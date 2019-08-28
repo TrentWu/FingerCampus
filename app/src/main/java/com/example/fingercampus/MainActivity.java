@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.fingercampus.Apply.ApplyActivity;
 import com.example.fingercampus.Attendance.AttendanceActivity;
 import com.example.fingercampus.Database.Dao;
 import com.example.fingercampus.Net.LoginActivity;
@@ -92,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.toolbar_timetable:
                         startActivity(new Intent(MainActivity.this, TimetableActivity.class));
                         Toast.makeText(MainActivity.this, "课程表", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.toolbar_apply:
+                        startActivity(new Intent(MainActivity.this, ApplyActivity.class));
+                        Toast.makeText(MainActivity.this, "教室申请", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         Toast.makeText(MainActivity.this, "啦啦啦", Toast.LENGTH_SHORT).show();

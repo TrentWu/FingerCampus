@@ -44,12 +44,16 @@
     <string name="timetable">课程表</string>
     <string name="toolbar_scan">扫一扫</string>
     <string name="toolbar_timetable">课程表</string>
+    <string name="toolbar_attendance">签到</string>
 
-    <string name="apply">教室申请</string>
+    <string name="toolbar_apply">教室申请</string>
     <string name="name">申请人姓名</string>
-    <string name="phone">联系电话</string>
+    <string name="phone">\t联系电话\t</string>
     <string name="classroom_number">教室编号</string>
     <string name="date">教室使用日期</string>
     <string name="users_number">使用人数</string>
     <string name="section">教室使用节次</string>
+    <string name="myapplication">我的申请</string>
+    <string name="number">编号</string>
+    <string name="apply">我的申请</string>
 </resources>

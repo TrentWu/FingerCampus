@@ -1,30 +1,42 @@
 package com.example.fingercampus.Apply;
 
-import android.app.Activity;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 import com.example.fingercampus.R;
 
-public class ApplyActivity extends Activity {
-
+public class ApplyActivity extends AppCompatActivity {
+    EditText name,phone,classroom_number,date,users_number,section;
+    Button submit,back;
+    Toolbar myapplication;
+    SQLiteDatabase db;
     Typeface typeface;
-    private EditText name,number,classroom_number,date,users_number,section;
-    private String nameText,numberText,classroom_numberText,dateText,users_numberText,sectionText;
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_myapplication, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.applyforclass);
+        findById();
         init();
     }
 
     private void init() {
-        typeface = Typeface.createFromAsset(getAssets(),"iconfont/iconfont.ttf");
-        Button back = findViewById(R.id.back);
         back.setTypeface(typeface);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,25 +44,75 @@ public class ApplyActivity extends Activity {
                 finish();
             }
         });
-
-        Button submit = findViewById(R.id.submit);
+        db=openOrCreateDatabase("apply.db",MODE_PRIVATE,null);
+        db.execSQL("create table if not exists afc(id integer primary key autoincrement,name text not null,phone phone not null," +
+                "classroom text not null,date text not null,users_number number not null,section text not null)");
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                name = findViewById(R.id.name);
-                nameText = name.getText().toString();
-                number = findViewById(R.id.number);
-                numberText = number.getText().toString();
-                classroom_number = findViewById(R.id.classroom_number);
-                classroom_numberText = classroom_number.getText().toString();
-                date = findViewById(R.id.date);
-                dateText = date.getText().toString();
-                users_number = findViewById(R.id.users_number);
-                users_numberText = users_number.getText().toString();
-                section = findViewById(R.id.section);
-                sectionText = section.getText().toString();
+            public void onClick(View view) {
+                toSql();
             }
         });
+        myapplication.setTitle("");
+        setSupportActionBar(myapplication);
+        Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if(menuItem.getItemId()==R.id.toolbar_myapplication){
+                    Toast.makeText(ApplyActivity.this, "我的申请", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ApplyActivity.this, MyApplication.class));
+                }
+                return true;
+            }
+        };
+        myapplication.setOnMenuItemClickListener(onMenuItemClick);
+    }
+
+    private void findById() {
+        typeface = Typeface.createFromAsset(getAssets(),"iconfont/iconfont.ttf");
+        submit = findViewById(R.id.submit);
+        back = findViewById(R.id.back);
+        myapplication = findViewById(R.id.myapplication);
+        name=findViewById(R.id.name);
+        phone = findViewById(R.id.phone);
+        classroom_number = findViewById(R.id.classroom_number);
+        date = findViewById(R.id.date);
+        users_number = findViewById(R.id.users_number);
+        section = findViewById(R.id.section);
+    }
+
+    void  toSql(){
+        String nameText = name.getText().toString();
+        String phoneText = phone.getText().toString();
+        String classroom_numberText = classroom_number.getText().toString();
+        String dateText = date.getText().toString();
+        String users_numberText = users_number.getText().toString();
+        String sectionText = section.getText().toString();
+        if(nameText.equals("")){
+            Toast.makeText(ApplyActivity.this,"请输入申请人姓名",Toast.LENGTH_SHORT).show();
+        }
+        else if(phoneText.equals("")){
+            Toast.makeText(ApplyActivity.this,"请输入联系电话",Toast.LENGTH_SHORT).show();
+        }
+        else if(classroom_numberText.equals("")){
+            Toast.makeText(ApplyActivity.this,"请输入教室编号",Toast.LENGTH_SHORT).show();
+        }
+        else if (dateText.equals("")) {
+            Toast.makeText(ApplyActivity.this,"请输入教室使用日期",Toast.LENGTH_SHORT).show();
+        }
+        else if (users_numberText.equals("")) {
+            Toast.makeText(ApplyActivity.this,"请输入使用人数",Toast.LENGTH_SHORT).show();
+        }
+        else if(sectionText.equals("")){
+            Toast.makeText(ApplyActivity.this,"请输入教室使用节次",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            String sql = "insert into afc(id,name,phone,classroom,date,users_number,section) " +
+                    "values(null,'" + nameText + "','" + phoneText + "','" + classroom_numberText + "','" + dateText + "'," +
+                    "'" + users_numberText + "','" + sectionText + "')";
+            db.execSQL(sql);
+            Toast.makeText(ApplyActivity.this,"提交成功",Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
