@@ -134,8 +134,10 @@ public class AttendanceActivity extends Activity {
                             if (result.equals(qvvalue)) {  //注⑤
                                 // 签到成功操作
                                 AttendanceRequest(usphone);
+                                finish();
                             } else {
                                 Toast.makeText(AttendanceActivity.this, "请扫描正确的签到码！", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         } catch (JSONException e) {
                             Toast.makeText(AttendanceActivity.this, "无网络连接", Toast.LENGTH_SHORT).show();

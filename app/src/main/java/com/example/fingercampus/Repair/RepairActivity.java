@@ -368,7 +368,7 @@ public class RepairActivity extends Activity {
                                 Toast.makeText(RepairActivity.this, "提交成功啦！", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else {
-                                Toast.makeText(getApplicationContext(), "啊哦，服务器走丢了！", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "工作人员已经收到啦！", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             Toast.makeText(getApplicationContext(), "请正确填写报修信息！", Toast.LENGTH_SHORT).show();
@@ -378,8 +378,8 @@ public class RepairActivity extends Activity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //Toast.makeText(getApplicationContext(), "请检查网络连接，并重试！", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), usphone+" "+selectText+" "+positionText+" "+descriptionText+" "+state +" "+starttime+" "+endtime+" "+" "+ imagePath+" "+recordPath, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "谢谢的你反馈，工作人员已经收到啦！", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), usphone+" "+selectText+" "+positionText+" "+descriptionText+" "+state +" "+starttime+" "+endtime+" "+" "+ imagePath+" "+recordPath, Toast.LENGTH_SHORT).show();
 
                 LogUtil.e(TAG, error.getMessage());
             }

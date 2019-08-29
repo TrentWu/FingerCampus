@@ -62,6 +62,14 @@
                 android:text="@string/repair"
                 android:textSize="40sp"
                 android:textColor="#00FFBB" />
+            <Button
+                android:id="@+id/apply"
+                android:layout_columnWeight="1"
+                android:layout_height="160dp"
+                android:background="#E2213F"
+                android:text="@string/toolbar_apply"
+                android:textSize="20sp"
+                android:textColor="#2341FF"/>
         </GridLayout>
 
     </ScrollView>
