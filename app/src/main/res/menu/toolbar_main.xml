@@ -13,11 +13,6 @@
             android:title="@string/toolbar_timetable"
             android:orderInCategory="100"
             app:showAsAction="never"/>
-        <item
-            android:id="@+id/toolbar_apply"
-            android:title="@string/toolbar_apply"
-            android:orderInCategory="100"
-            app:showAsAction="never"/>
     </group>
 
 </menu>
