@@ -2,7 +2,9 @@
   <dictionary name="zzzzh">
     <words>
       <w>autofill</w>
+      <w>linerlayout</w>
       <w>shadowrelativelayout</w>
+      <w>textindex</w>
     </words>
   </dictionary>
 </component>

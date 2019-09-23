@@ -4,14 +4,14 @@
 
     <group>
         <item
-            android:id="@+id/toolbar_attendance"
-            android:title="@string/toolbar_attendance"
+            android:id="@+id/logout"
+            android:title="@string/logout"
             android:orderInCategory="90"
             app:showAsAction="never"/>
         <item
-            android:id="@+id/toolbar_timetable"
-            android:title="@string/toolbar_timetable"
-            android:orderInCategory="100"
+            android:id="@+id/about"
+            android:title="@string/about"
+            android:orderInCategory="90"
             app:showAsAction="never"/>
     </group>
 

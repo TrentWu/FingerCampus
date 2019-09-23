@@ -52,24 +52,38 @@ public class MainActivity extends AppCompatActivity {
      * 初始化视图组件交互事件
      */
     private void initViewEvent() {
-        Button logout = findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.clear();
-                editor.apply();
-                Toast.makeText(MainActivity.this, "注销成功！", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                finish();
-            }
-        });
+//        Button logout = findViewById(R.id.logout);
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                editor.clear();
+//                editor.apply();
+//                Toast.makeText(MainActivity.this, "注销成功！", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//                finish();
+//            }
+//        });
         Button repair = findViewById(R.id.repair);
         repair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, RepairActivity.class));
+            }
+        });
+        Button timetable=findViewById(R.id.toolbar_timetable);
+        timetable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TimetableActivity.class));
+            }
+        });
+        Button attendance = findViewById(R.id.toolbar_attendance);
+        attendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AttendanceActivity.class));
             }
         });
     }
@@ -85,14 +99,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case R.id.toolbar_attendance:
-                        Toast.makeText(MainActivity.this, "签到", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, AttendanceActivity.class));
+                    case R.id.logout:
+                        SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        Toast.makeText(MainActivity.this, "注销成功！", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        finish();
                         break;
-                    case R.id.toolbar_timetable:
-                        startActivity(new Intent(MainActivity.this, TimetableActivity.class));
-                        Toast.makeText(MainActivity.this, "课程表", Toast.LENGTH_SHORT).show();
+                    case R.id.about:
+                        Toast.makeText(MainActivity.this,"关于我们",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this,about.class));
                         break;
+//                    case R.id.toolbar_timetable:
+//                        startActivity(new Intent(MainActivity.this, TimetableActivity.class));
+//                        Toast.makeText(MainActivity.this, "课程表", Toast.LENGTH_SHORT).show();
+//                        break;
                     default:
                         Toast.makeText(MainActivity.this, "啦啦啦", Toast.LENGTH_SHORT).show();
                         break;
