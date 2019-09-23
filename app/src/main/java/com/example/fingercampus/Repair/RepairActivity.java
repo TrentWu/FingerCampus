@@ -343,11 +343,10 @@ public class RepairActivity extends Activity {
         return dateFormat.format(date);
     }
 
-
     public void RepairRequest(final String usphone, final String selectText,final String positionText,final String descriptionText,final String state,final String starttime,final String endtime,final String recordPath,final String imagePath) {
         //请求地址
         String url = "http://119.3.232.205:8080/FingerCampus/*";
-        final String tag = "Repair";
+        final String tag = "repair";
 
         //取得请求队列
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -361,40 +360,36 @@ public class RepairActivity extends Activity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jsonObject = (JSONObject) new JSONObject(response).get("repair_" +
-                                    "params");
+                            JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");
                             String result = jsonObject.getString("Result");
                             if (result.equals("success")) {
-                                Toast.makeText(RepairActivity.this, "提交成功啦！", Toast.LENGTH_SHORT).show();
-                                finish();
+                                Toast.makeText(RepairActivity.this, "申请已经提交，等待管理员审核！", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getApplicationContext(), "工作人员已经收到啦！", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "申请提交失败！", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
-                            Toast.makeText(getApplicationContext(), "请正确填写报修信息！", Toast.LENGTH_SHORT).show();
-                            LogUtil.e(TAG, e.getMessage());
+                            Toast.makeText(getApplicationContext(), "请检查填写的内容！", Toast.LENGTH_SHORT).show();
+                            LogUtil.e(TAG , e.getMessage()+" ");
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "谢谢的你反馈，工作人员已经收到啦！", Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(), usphone+" "+selectText+" "+positionText+" "+descriptionText+" "+state +" "+starttime+" "+endtime+" "+" "+ imagePath+" "+recordPath, Toast.LENGTH_SHORT).show();
-
-                LogUtil.e(TAG, error.getMessage());
+                Toast.makeText(getApplicationContext(), "请检查网络连接，并重试！", Toast.LENGTH_SHORT).show();
+                LogUtil.e(TAG, error.getMessage()+" ");
             }
         }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("RequestType", tag);
-                params.put("usphone", usphone);
-                params.put("selectText",selectText );
-                params.put("positionText",positionText);
-                params.put("descriptionText",descriptionText);
-                params.put("state",state);
-                params.put("starttime",starttime);
-                params.put("endtime",endtime);
+                params.put("odphone", usphone);
+                params.put("odtype",selectText );
+                params.put("odplace",positionText);
+                params.put("oddescription",descriptionText);
+                params.put("odstate",state);
+                params.put("odstarttime",starttime);
+                params.put("odendtime",endtime);
                 params.put("imagePath",imagePath);
                 params.put("recordPath",recordPath);
                 return params;
@@ -406,6 +401,7 @@ public class RepairActivity extends Activity {
         //将请求添加到队列中
         requestQueue.add(request);
     }
+
 
 }
 

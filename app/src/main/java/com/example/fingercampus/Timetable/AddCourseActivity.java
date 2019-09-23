@@ -162,7 +162,7 @@ public class AddCourseActivity extends Activity {
                         startActivity(new Intent(AddCourseActivity.this, TimetableActivity.class));
                         finish();
                     } else {
-                        Toast.makeText(AddCourseActivity.this, "导入失败！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddCourseActivity.this, "导入失败！", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     finishButton.setClickable(true);
