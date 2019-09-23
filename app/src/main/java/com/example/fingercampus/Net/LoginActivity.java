@@ -50,7 +50,10 @@ public class LoginActivity extends Activity {
         //查看SharedPreferences中是否存储了用户账号信息，来决定是否跳转到登录界面
         SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
         if (sharedPreferences.getString(Constants.RECORD.rephone, null) != null) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            Intent intent = new Intent();
+            intent.putExtra("usphone", sharedPreferences.getString(Constants.RECORD.rephone, null));
+            intent.setClass(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
             finish();
         }
         //使用阿里图标库

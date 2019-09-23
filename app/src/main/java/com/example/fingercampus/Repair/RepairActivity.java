@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
@@ -36,6 +37,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fingercampus.Constants;
 import com.example.fingercampus.Net.RegisterActivity;
 import com.example.fingercampus.PermissionsActivity;
 import com.example.fingercampus.R;
@@ -166,7 +168,13 @@ public class RepairActivity extends Activity {
                 state = "待处理";
                 usphone = intent.getStringExtra("usphone");
                 starttime = getFileName();
-                endtime = "0";
+                endtime = "";
+                if(recordPath == null){
+                    recordPath = "";
+                }
+                if(imagePath == null){
+                    imagePath = "";
+                }
                 RepairRequest(usphone,selectText,positionText,descriptionText,state,starttime,endtime,recordPath,imagePath);
             }
         });
@@ -277,7 +285,7 @@ public class RepairActivity extends Activity {
                                 case MotionEvent.ACTION_DOWN:
                                     recording.setText("长按录音");
                                     String mpath = mrecord.startRecord();
-                                    Toast.makeText(RepairActivity.this,mpath,Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RepairActivity.this, mpath,Toast.LENGTH_SHORT).show();
                                     break;
                                 //case MotionEvent.ACTION_MOVE: //移动// break;
 
@@ -392,6 +400,9 @@ public class RepairActivity extends Activity {
                 params.put("odendtime",endtime);
                 params.put("imagePath",imagePath);
                 params.put("recordPath",recordPath);
+                LogUtil.d(tag, "RequestType = "+tag+" odphone = "+usphone+" odtype = "+selectText
+                        +" odplace = "+positionText+" oddescription = "+descriptionText+" odstate = "+state
+                        +" odstarttime = "+starttime+" odendtime = "+endtime+" imagePath = "+imagePath+" recordPath = "+recordPath);
                 return params;
             }
         };

@@ -39,7 +39,6 @@ import cn.smssdk.SMSSDK;
 public class ApplyActivity extends AppCompatActivity {
     private EditText name,phone,classroom_number,date,users_number,section;
     private Button submit,back;
-    private SQLiteDatabase db;
     private Typeface typeface;
 
     private String TAG = "ApplyActivity";
@@ -63,13 +62,9 @@ public class ApplyActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ApplyActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
-        db=openOrCreateDatabase("apply.db",MODE_PRIVATE,null);
-        db.execSQL("create table if not exists afc(id integer primary key autoincrement,name text not null,phone phone not null," +
-                "classroom text not null,date text not null,users_number number not null,section text not null)");
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
