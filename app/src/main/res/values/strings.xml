@@ -49,6 +49,9 @@
     <string name="addCourse">&#xe686;</string>
     <string name="add">&#xe686;</string>
     <string name="classroom">教室</string>
+    <string name="about">关于</string>
+    <string name="title">一点校园</string>
+    <string name="function">一点校园致力于在校学生实现手机签到，手机报修，课程表查询等模块。简便易用，易于使用。</string>
 
     <string name="toolbar_apply">教室申请</string>
     <string name="name">申请人姓名</string>
