@@ -52,7 +52,7 @@
 
     <string name="toolbar_apply">教室申请</string>
     <string name="name">申请人姓名</string>
-    <string name="phone">\t联系电话\t</string>
+    <string name="phone">联系电话\t</string>
     <string name="classroom_number">教室编号</string>
     <string name="date">教室使用日期</string>
     <string name="users_number">使用人数</string>
@@ -60,4 +60,8 @@
     <string name="myapplication">我的申请</string>
     <string name="number">编号</string>
     <string name="apply">我的申请</string>
+
+    <string name="scan_code">签到扫描</string>
+    <string name="open_flash">打开闪光灯</string>
+    <string name="gallery">打开相册</string>
 </resources>

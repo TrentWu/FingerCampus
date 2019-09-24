@@ -110,6 +110,9 @@ public class AttendanceActivity extends Activity {
                     Toast.makeText(this, "扫码结果出错！", Toast.LENGTH_SHORT).show();
                 }
             }
+        }else if (requestCode == REQUEST_CODE_SCAN && resultCode == RESULT_CANCELED){
+            Toast.makeText(this, "取消签到", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 

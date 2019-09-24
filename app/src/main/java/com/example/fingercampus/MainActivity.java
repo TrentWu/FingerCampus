@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this,"申请教室",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this, ApplyActivity.class));
-                finish();
             }
         });
     }
@@ -101,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.toolbar_attendance:
-                        Toast.makeText(MainActivity.this, "签到", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, AttendanceActivity.class));
+                        Toast.makeText(MainActivity.this, "签到", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.toolbar_timetable:
                         startActivity(new Intent(MainActivity.this, TimetableActivity.class));

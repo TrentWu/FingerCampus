@@ -62,13 +62,13 @@ public class ApplyActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                LogUtil.d(TAG, "我要退出啦！");
                 finish();
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //toSql();
                 String nameText = name.getText().toString().trim();
                 String phoneText = phone.getText().toString().trim();
                 String classroom_numberText = classroom_number.getText().toString().trim();
@@ -124,7 +124,6 @@ public class ApplyActivity extends AppCompatActivity {
         typeface = Typeface.createFromAsset(getAssets(),"iconfont/iconfont.ttf");
         submit = findViewById(R.id.submit);
         back = findViewById(R.id.back);
-        //myapplication = findViewById(R.id.myapplication);
         name=findViewById(R.id.name);
         phone = findViewById(R.id.phone);
         classroom_number = findViewById(R.id.classroom_number);
@@ -153,12 +152,12 @@ public class ApplyActivity extends AppCompatActivity {
                             JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");
                             String result = jsonObject.getString("Result");
                             if (result.equals("success")) {
-                                Toast.makeText(ApplyActivity.this, "申请已经提交，等待管理员审核！", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ApplyActivity.this, "申请提交成功！", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getApplicationContext(), "申请提交失败！", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
-                            Toast.makeText(getApplicationContext(), "请正确填写注册信息！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "请正确填写申请信息！", Toast.LENGTH_SHORT).show();
                             LogUtil.e(TAG , e.getMessage()+" ");
                         }
                     }

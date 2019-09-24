@@ -12,6 +12,34 @@ public class Information {
         section = s;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setUsers(String users) {
+        this.users = users;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
     public String getClassroom() {
         return classroom;
     }

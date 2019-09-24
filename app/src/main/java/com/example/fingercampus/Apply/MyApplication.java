@@ -21,7 +21,6 @@ public class MyApplication extends Activity {
 
     ListView listView;
     ArrayList<Information> info;
-    SQLiteDatabase db;
     Typeface typeface;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,20 +36,6 @@ public class MyApplication extends Activity {
             }
         });
         info = new ArrayList<>();
-        db = openOrCreateDatabase("apply.db",MODE_PRIVATE,null);
-        Cursor cursor = db.rawQuery("select * from afc",null);
-        while(cursor.moveToNext()){
-            String id = cursor.getString(cursor.getColumnIndex("id"));
-            String name = cursor.getString(cursor.getColumnIndex("name"));
-            String phone = cursor.getString(cursor.getColumnIndex("phone"));
-            String classroom = cursor.getString(cursor.getColumnIndex("classroom"));
-            String date = cursor.getString(cursor.getColumnIndex("date"));
-            String users = cursor.getString(cursor.getColumnIndex("users_number"));
-            String section = cursor.getString(cursor.getColumnIndex("section"));
-            Information in = new Information(id,name,phone,classroom,date,users,section);
-            info.add(in);
-        }
-        cursor.close();
         listView = findViewById(R.id.list);
         listView.setAdapter(new BaseAdapter() {
             @Override
