@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.fingercampus.Apply.ApplyActivity;
 import com.example.fingercampus.Attendance.AttendanceActivity;
 import com.example.fingercampus.Database.Dao;
 import com.example.fingercampus.Net.LoginActivity;
@@ -25,6 +26,7 @@ import com.example.fingercampus.Tools.LogUtil;
 public class MainActivity extends AppCompatActivity {
 
     private long exitTime = 0;
+    private String usphone;
 
     /**
      * 绑定res/menu中的菜单到活动
@@ -69,7 +71,19 @@ public class MainActivity extends AppCompatActivity {
         repair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RepairActivity.class));
+                Intent intent = getIntent();
+                usphone = intent.getStringExtra("usphone");
+                intent = new Intent(MainActivity.this,RepairActivity.class);
+                intent.putExtra("usphone",usphone);
+                startActivity(intent);
+            }
+        });
+        Button apply = findViewById(R.id.apply);
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,"申请教室",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, ApplyActivity.class));
             }
         });
         Button timetable=findViewById(R.id.toolbar_timetable);

@@ -19,8 +19,12 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+    <!--调用录音权限-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 
     <application
         android:allowBackup="true"
@@ -47,6 +51,7 @@
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".Repair.RepairActivity"
             tools:ignore="InnerclassSeparator" >
+
         </activity>
         <activity android:name=".Attendance.AttendanceActivity"
             tools:ignore="InnerclassSeparator" >
@@ -55,10 +60,26 @@
             tools:ignore="InnerclassSeparator" >
         </activity>
         <activity android:name=".PermissionsActivity" />
+        <activity android:name=".Apply.ApplyActivity"
+            tools:ignore="InnerclassSeparator">
+        </activity>
+        <activity android:name=".Apply.MyApplication"
+            tools:ignore="InnerclassSeparator">
+        </activity>
         <activity android:name=".Timetable.ShowCourseActivity"
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".Timetable.AddCourseActivity"
             tools:ignore="InnerclassSeparator" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="uri.provider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/contentprovider" />
+        </provider>
     </application>
+
 
 </manifest>
