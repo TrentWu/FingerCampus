@@ -90,7 +90,11 @@ public class MainActivity extends AppCompatActivity {
         timetable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TimetableActivity.class));
+                Intent intent = getIntent();
+                usphone = intent.getStringExtra("usphone");
+                intent = new Intent(MainActivity.this, TimetableActivity.class);
+                intent.putExtra("usphone", usphone);
+                startActivity(intent);
             }
         });
         Button attendance = findViewById(R.id.toolbar_attendance);

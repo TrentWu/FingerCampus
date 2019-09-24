@@ -66,8 +66,6 @@
         <activity android:name=".Apply.MyApplication"
             tools:ignore="InnerclassSeparator">
         </activity>
-        <activity android:name=".Timetable.ShowCourseActivity"
-            tools:ignore="InnerclassSeparator" />
         <activity android:name=".Timetable.AddCourseActivity"
             tools:ignore="InnerclassSeparator" />
         <provider
