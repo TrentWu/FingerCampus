@@ -182,6 +182,7 @@ public class AddCourseActivity extends Activity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("RequestType", tag);
+                params.put("action", "addOne");
                 params.put("csname", csname);  //注⑥
                 params.put("csbweek", csbweek);
                 params.put("cseweek", cseweek);
