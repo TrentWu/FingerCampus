@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@mipmap/bgindex"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -43,7 +44,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="200dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:alignmentMode="alignBounds">
@@ -55,7 +56,8 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     tools:ignore="ButtonStyle"
-                    android:layout_width="0dp" />
+                    android:layout_width="0dp"
+                     />
 
                 <Button
                     android:id="@+id/repair"
@@ -79,7 +81,40 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:alignmentMode="alignBounds">
+
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:ignore="ButtonStyle"
+                    android:background="#0fff"
+                    android:layout_width="0dp"
+                    android:text="签到"
+                    />
+
+                <Button
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#0fff"
+                    android:layout_width="0dp"
+                    android:text="报修"/>
+                <Button
+                    android:layout_margin="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#0fff"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:text="课程表"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:alignmentMode="alignBounds">
@@ -88,11 +123,27 @@
                     android:id="@+id/apply"
                     android:layout_margin="1dp"
                     android:layout_gravity="fill"
-                    android:background="@drawable/ic_kechengbiao"
+                    android:background="@drawable/ic_classroom"
                     android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="100dp"
                     tools:ignore="ButtonStyle" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="20dp"
+                android:alignmentMode="alignBounds">
+
+                <Button
+                    android:layout_margin="1dp"
+                    android:layout_gravity="fill"
+                    android:background="#0fff"
+                    android:layout_height="wrap_content"
+                    android:text="教室申请"
+                    tools:ignore="ButtonStyle"
+                    android:layout_width="wrap_content" />
             </LinearLayout>
         </LinearLayout>
 
