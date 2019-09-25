@@ -4,23 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#fff"
     android:layout_gravity="center_horizontal">
     <Button
         android:id="@+id/openCamera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/firstColor"
         android:text="@string/openCamera"
+        android:textColor="#fff"
         android:textSize="18sp"/>
     <Button
         android:id="@+id/selectFromAlbum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/selectFromAlbum"
+        android:textColor="#fff"
+        android:background="@color/firstColor"
         android:textSize="18sp"/>
     <Button
         android:id="@+id/picCancel"
+        android:background="@color/firstColor"
+        android:layout_marginTop="10dp"
+        android:textColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:text="@string/picCancel"
         android:textSize="18sp"/>
 </LinearLayout>

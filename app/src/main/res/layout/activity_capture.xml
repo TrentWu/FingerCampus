@@ -26,13 +26,14 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolBarHeight"
             android:layout_gravity="top"
-            android:background="#99000000">
+            android:background="#80FFFFFF">
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/backIv"
                 android:layout_width="36dp"
                 android:layout_height="match_parent"
                 android:padding="6dp"
+                android:tint="@color/firstColor"
                 app:srcCompat="@drawable/ic_back" />
 
             <TextView
@@ -40,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/scan_code"
-                android:textColor="#ffffff"
+                android:textColor="@color/firstColor"
                 android:textSize="20sp" />
 
 
@@ -60,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="96dp"
             android:layout_gravity="bottom"
-            android:background="#99000000"
+            android:background="#80FFFFFF"
             android:orientation="horizontal">
 
             <android.support.v7.widget.LinearLayoutCompat
@@ -75,6 +76,7 @@
                     android:id="@+id/flashLightIv"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
+                    android:tint="@color/firstColor"
                     app:srcCompat="@drawable/ic_close" />
 
                 <TextView
@@ -84,7 +86,7 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="@string/open_flash"
-                    android:textColor="#ffffff" />
+                    android:textColor="@color/firstColor" />
 
             </android.support.v7.widget.LinearLayoutCompat>
 
@@ -100,8 +102,7 @@
                     android:id="@+id/albumIv"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:tint="#ffffffff"
-                    app:srcCompat="@drawable/ic_photo" />
+                    app:srcCompat="@drawable/ic_xiangce" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -110,7 +111,7 @@
                     android:gravity="center"
                     android:text="@string/gallery"
 
-                    android:textColor="#ffffff" />
+                    android:textColor="@color/firstColor" />
             </android.support.v7.widget.LinearLayoutCompat>
 
 

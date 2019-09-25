@@ -1,63 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"
+    android:background="@mipmap/aboutbg"
  >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints,UselessLeaf"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,UselessLeaf">
+
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/firstColor"
-            android:text="@string/title"
-            android:textSize="50sp"
-            />
+            android:layout_gravity="center"
+            android:src="@mipmap/logo" />
+
         <TextView
             android:id="@+id/function"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:textColor="@color/firstColor"
             android:padding="20dp"
             android:text="@string/function"
+            android:textColor="@color/firstColor"
             android:textSize="20sp"
             tools:ignore="RtlHardcoded" />
+
         <TextView
             android:id="@+id/developerone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/firstColor"
             android:padding="15dp"
-            android:text="后端：吴传成"
+            android:text="后端，签到：吴传成"
+            android:textColor="@color/firstColor"
             android:textSize="20sp"
             tools:ignore="RtlHardcoded" />
+
         <TextView
             android:id="@+id/developertwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="15dp"
-            android:textColor="@color/firstColor"
             android:text="前端:张哲"
+            android:textColor="@color/firstColor"
             android:textSize="20sp"
             tools:ignore="RtlHardcoded" />
+
         <TextView
             android:id="@+id/developerthree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="15dp"
+            android:text="报修:尹晓丹"
             android:textColor="@color/firstColor"
-            android:text="签到:尹晓丹"
             android:textSize="20sp"
             tools:ignore="RtlHardcoded" />
+
         <TextView
             android:id="@+id/developerfour"
             android:layout_width="match_parent"
@@ -65,23 +76,19 @@
             android:gravity="center"
             android:padding="15dp"
             android:text="课程表:徐福颖"
-            android:textSize="20sp"
             android:textColor="@color/firstColor"
+            android:textSize="20sp"
             tools:ignore="RtlHardcoded" />
+
         <TextView
             android:id="@+id/developerfive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="15dp"
-            android:text="报修:孙凡"
+            android:text="教室申请:孙凡"
             android:textColor="@color/firstColor"
             android:textSize="20sp"
             tools:ignore="RtlHardcoded" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/logo"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
