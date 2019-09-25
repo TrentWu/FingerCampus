@@ -9,7 +9,7 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/back"
+        android:text="<"
         android:textColor="#ffffff"
         android:textSize="30sp"
         android:elevation="10dp"
