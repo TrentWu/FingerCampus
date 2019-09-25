@@ -16,7 +16,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.fingercampus.Net.LoginActivity;
 import com.example.fingercampus.R;
 
 import org.json.JSONException;
@@ -71,7 +70,7 @@ public class UserCenterActivity extends Activity {
      *
      * @param usphone    用户手机号
      */
-    public void UserRequest(final String usphone, final String uspassword) {
+    public void UserRequest(final String usphone) {
         //请求地址
         String url = "http://119.3.232.205:8080/FingerCampus/*";    //注①
         final String tag = "User";    //注②
