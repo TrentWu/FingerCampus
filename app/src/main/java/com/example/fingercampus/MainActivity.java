@@ -19,6 +19,7 @@ import com.example.fingercampus.Net.LoginActivity;
 import com.example.fingercampus.Repair.RepairActivity;
 import com.example.fingercampus.Timetable.TimetableActivity;
 import com.example.fingercampus.Tools.LogUtil;
+import com.example.fingercampus.UserCenter.UserCenterActivity;
 
 /**
  * 主活动类
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private long exitTime = 0;
     private String usphone;
+    Intent intent;
 
     /**
      * 绑定res/menu中的菜单到活动
@@ -48,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         new Dao(this);//创建SQLite数据库实例
         initToolbar();
         initViewEvent();
+        intent = getIntent();
+        usphone = intent.getStringExtra("usphone");
     }
 
     /**
@@ -71,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
         repair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
-                usphone = intent.getStringExtra("usphone");
                 intent = new Intent(MainActivity.this,RepairActivity.class);
                 intent.putExtra("usphone",usphone);
                 startActivity(intent);
@@ -90,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
         timetable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
-                usphone = intent.getStringExtra("usphone");
                 intent = new Intent(MainActivity.this, TimetableActivity.class);
                 intent.putExtra("usphone", usphone);
                 startActivity(intent);
@@ -147,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO 跳转到个人中心活动
+                intent = new Intent(MainActivity.this, UserCenterActivity.class);
+                intent.putExtra("usphone", usphone);
+                startActivity(intent);
                 Toast.makeText(MainActivity.this, "个人中心", Toast.LENGTH_SHORT).show();
             }
         });

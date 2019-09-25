@@ -68,6 +68,9 @@
         </activity>
         <activity android:name=".Timetable.AddCourseActivity"
             tools:ignore="InnerclassSeparator" />
+        <activity android:name=".UserCenter.UserCenterActivity" />
+        <activity android:name=".UserCenter.UserCenterActivity" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="uri.provider"
