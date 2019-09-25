@@ -1,23 +1,15 @@
-package com.example.fingercampus.Apply;
+package com.example.fingercampus.Repair;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
-import  android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.BaseAdapter;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,48 +17,30 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.fingercampus.Constants;
-import com.example.fingercampus.MainActivity;
-import com.example.fingercampus.Net.LoginActivity;
+import com.example.fingercampus.Apply.MyApplication;
 import com.example.fingercampus.R;
 import com.example.fingercampus.Tools.LogUtil;
-import com.example.fingercampus.Tools.TimeUtil;
-
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-public class MyApplication extends Activity {
-
-    ListView listView;
-    ArrayList<Information> info;
-    Typeface typeface;
-    private boolean isopen =true;
-    private String TAG="MyApplication";
-    private String usphone;
+public class MyRepair extends Activity {
     final List<Map<String,Object>> mList = new ArrayList<>();
-
+    private Typeface typeface;
+    ListView listView;
+    private String TAG="MyRepair";
     private SimpleAdapter adapter;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myapplication);
-
-        SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
-        usphone = sharedPreferences.getString(Constants.RECORD.rephone, null);
-        listView = findViewById(R.id.list);
+        setContentView(R.layout.myrepair);
+        listView = findViewById(R.id.listView);
         typeface = Typeface.createFromAsset(getAssets(), "iconfont/iconfont.ttf");
         Button back = findViewById(R.id.back);
         back.setTypeface(typeface);
@@ -76,10 +50,10 @@ public class MyApplication extends Activity {
                 finish();
             }
         });
-        queryRequest(usphone);
-        adapter = new SimpleAdapter(this, mList, R.layout.application_item,
-                new String[]{"id", "name", "classroom", "usersnumber", "date", "usphone", "section"},
-                new int[]{R.id.id, R.id.name, R.id.classroom, R.id.users, R.id.date, R.id.phone, R.id.section});
+        queryRequest();
+        adapter = new SimpleAdapter(this, mList, R.layout.repair_item,
+                new String[]{"id", "type", "position", "usersnumber", "usphone", "description", "state"},
+                new int[]{R.id.id, R.id.type, R.id.position, R.id.phone, R.id.date, R.id.description, R.id.state});
         listView.setAdapter(adapter);
 
         Button fresh = (Button) findViewById(R.id.fresh);
@@ -91,13 +65,13 @@ public class MyApplication extends Activity {
 
         });
     }
-    /*
+    /**
      ***用户查询类
      */
-    public void queryRequest(final String usphone) {
+    public void queryRequest() {
         //请求地址
         String url = "http://119.3.232.205:8080/FingerCampus/*";    //注①
-        final String tag = "MyApplication";    //注②
+        final String tag = "MyRepair";    //注②
 
         //取得请求队列
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -111,23 +85,26 @@ public class MyApplication extends Activity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONArray jsonArr = (JSONArray)new JSONObject(response).get("list");  //注③
+                            JSONArray jsonArr = (JSONArray)new JSONObject(response).get("list1");  //注③
                             LogUtil.d(TAG,jsonArr.toString());
-                            Toast.makeText(MyApplication.this,"请刷新！",Toast.LENGTH_SHORT).show();;
+                            Toast.makeText(MyRepair.this,"请刷新！",Toast.LENGTH_SHORT).show();
                             for(int i=0;i<jsonArr.length();i++){
                                 Map<String ,Object> map=new HashMap<String, Object>();
                                 map.put("id",i+1);
-                                map.put("name",jsonArr.getJSONObject(i).get("name").toString());
-                                map.put("classroom",jsonArr.getJSONObject(i).get("classroom").toString());
-                                map.put("usphone",jsonArr.getJSONObject(i).get("usphone").toString());
-                                map.put("date",jsonArr.getJSONObject(i).get("date").toString());
-                                map.put("usersnumber",jsonArr.getJSONObject(i).get("usersnumber").toString());
-                                map.put("section",jsonArr.getJSONObject(i).get("section").toString());
+                                map.put("type",jsonArr.getJSONObject(i).get("odtype").toString());
+                                map.put("position",jsonArr.getJSONObject(i).get("odplace").toString());
+                                map.put("usphone",jsonArr.getJSONObject(i).get("odphone").toString());
+                                map.put("description",jsonArr.getJSONObject(i).get("oddescription").toString());
+                                map.put("state",jsonArr.getJSONObject(i).get("odstate").toString());
+                                map.put("starttime",jsonArr.getJSONObject(i).get("odstarttime").toString());
+                                map.put("endtime",jsonArr.getJSONObject(i).get("odendtime").toString());
+                                map.put("imagePath",jsonArr.getJSONObject(i).get("imagePath").toString());
+                                map.put("recordPath",jsonArr.getJSONObject(i).get("recordPath").toString());
                                 mList.add(map);
                             }
                         } catch (JSONException e) {
                             //loginButton.setClickable(true);
-                            Toast.makeText(MyApplication.this, "无网络连接", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MyRepair.this, "无网络连接", Toast.LENGTH_SHORT).show();
                             Log.e(TAG, e.getMessage(), e);
                         }
                     }
@@ -135,7 +112,7 @@ public class MyApplication extends Activity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //loginButton.setClickable(true);
-                Toast.makeText(MyApplication.this, "请稍后重试", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyRepair.this, "请稍后重试", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, error.getMessage(), error);
             }
         }) {
@@ -143,7 +120,6 @@ public class MyApplication extends Activity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("RequestType", tag);
-                params.put("usphone", usphone);  //注⑥
                 return params;
             }
         };
@@ -154,5 +130,6 @@ public class MyApplication extends Activity {
         //将请求添加到队列中
         requestQueue.add(request);
     }
+
 
 }

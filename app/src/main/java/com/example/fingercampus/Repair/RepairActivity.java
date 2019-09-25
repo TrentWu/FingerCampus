@@ -16,8 +16,12 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -61,7 +65,7 @@ import static com.android.volley.VolleyLog.d;
 import static com.example.fingercampus.R.layout.picpopupwindow;
 import static com.example.fingercampus.R.layout.recordingpopuowindow;
 
-public class RepairActivity extends Activity {
+public class RepairActivity extends AppCompatActivity {
 
     private Spinner select;
     private String selectText;
@@ -105,6 +109,12 @@ public class RepairActivity extends Activity {
     Typeface typeface;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_repair, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.repairs_main);
@@ -113,6 +123,22 @@ public class RepairActivity extends Activity {
     }
 
     private void init() {
+        Toolbar toolbar = findViewById(R.id.toolbar_repair);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.toolbar_myrepair:
+                        startActivity(new Intent(RepairActivity.this, MyRepair.class));
+                        break;
+                }
+                return true;
+            }
+        };
+        toolbar.setOnMenuItemClickListener(onMenuItemClick);
+
         iv_CameraImg = findViewById(R.id.iv_CameraImg);
         picCancel = findViewById(R.id.picCancel);
         typeface = Typeface.createFromAsset(getAssets(), "iconfont/iconfont.ttf");
@@ -161,13 +187,14 @@ public class RepairActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
+                SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
+                usphone = sharedPreferences.getString(Constants.RECORD.rephone, null);
                 selectText = select.getSelectedItem().toString();
                 positionText = position.getText().toString();
                 descriptionText = description.getText().toString();
                 state = "待处理";
-                usphone = intent.getStringExtra("usphone");
                 starttime = getFileName();
+
                 endtime = "";
                 if(recordPath == null){
                     recordPath = "";
@@ -175,6 +202,7 @@ public class RepairActivity extends Activity {
                 if(imagePath == null){
                     imagePath = "";
                 }
+
                 RepairRequest(usphone,selectText,positionText,descriptionText,state,starttime,endtime,recordPath,imagePath);
             }
         });
