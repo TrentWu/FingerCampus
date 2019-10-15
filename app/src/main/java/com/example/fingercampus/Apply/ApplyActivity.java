@@ -66,6 +66,8 @@ public class ApplyActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,7 +110,7 @@ public class ApplyActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.toolbar_myapplication:
-                        Toast.makeText(ApplyActivity.this, "我的申请", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(ApplyActivity.this, "我的申请", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(ApplyActivity.this, MyApplication.class));
                         break;
                 }
@@ -117,7 +119,7 @@ public class ApplyActivity extends AppCompatActivity {
         };
         toolbar.setOnMenuItemClickListener(onMenuItemClick);
     }
-        //myapplication.setOnMenuItemClickListener(onMenuItemClick);
+    //myapplication.setOnMenuItemClickListener(onMenuItemClick);
 
 
     private void findById() {
