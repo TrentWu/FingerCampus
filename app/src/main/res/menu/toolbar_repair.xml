@@ -7,5 +7,10 @@
             android:title="@string/myrepair"
             android:orderInCategory="100"
             app:showAsAction="never"/>
+        <item
+            android:id="@+id/toolbar_call"
+            android:title="@string/call"
+            android:orderInCategory="100"
+            app:showAsAction="never"/>
     </group>
 </menu>

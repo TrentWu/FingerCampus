@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@mipmap/bgindex"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ToolBarTheme"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <Button
+            android:id="@+id/toolbar_user"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="start"
+            android:background="@drawable/ic_user"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main"
+            android:layout_gravity="center"
+            android:textSize="22sp"
+            android:textStyle="normal"
+            android:textColor="#FFFFFF"/>
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/linerlayout"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:alignmentMode="alignBounds">
+
+                <Button
+                    android:id="@+id/toolbar_attendance"
+                    android:background="@drawable/ic_qiandao"
+                    android:textColor="#EDF0AA"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    tools:ignore="ButtonStyle"
+                    android:layout_width="0dp"
+                    />
+
+                <Button
+                    android:id="@+id/repair"
+                    android:background="@drawable/ic_pair"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    tools:ignore="ButtonStyle" />
+                <Button
+                    android:id="@+id/toolbar_timetable"
+                    android:layout_margin="1dp"
+                    android:layout_gravity="fill"
+                    android:background="@drawable/ic_kechengbiao"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    tools:ignore="ButtonStyle" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:alignmentMode="alignBounds">
+
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:ignore="ButtonStyle"
+                    android:background="#0fff"
+                    android:layout_width="0dp"
+                    android:text="签到"
+                    />
+
+                <Button
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#0fff"
+                    android:layout_width="0dp"
+                    android:text="报修"/>
+                <Button
+                    android:layout_margin="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#0fff"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:text="课程表"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:alignmentMode="alignBounds">
+
+                <Button
+                    android:id="@+id/apply"
+                    android:layout_margin="1dp"
+                    android:layout_gravity="fill"
+                    android:background="@drawable/ic_classroom"
+                    android:layout_height="100dp"
+                    android:layout_width="100dp"
+                    tools:ignore="ButtonStyle" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="20dp"
+                android:alignmentMode="alignBounds">
+
+                <Button
+                    android:layout_margin="1dp"
+                    android:layout_gravity="fill"
+                    android:background="#0fff"
+                    android:layout_height="wrap_content"
+                    android:text="教室申请"
+                    tools:ignore="ButtonStyle"
+                    android:layout_width="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

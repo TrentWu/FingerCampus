@@ -104,7 +104,7 @@ public class RepairActivity extends AppCompatActivity {
     private int RECORD_CODE = 100;
 
     private String[] permissions = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.RECORD_AUDIO};
+            Manifest.permission.RECORD_AUDIO, Manifest.permission.CALL_PHONE};
     private PermissionsCheckerUtil permissionCheckerUtil;
     Typeface typeface;
 
@@ -132,6 +132,12 @@ public class RepairActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     case R.id.toolbar_myrepair:
                         startActivity(new Intent(RepairActivity.this, MyRepair.class));
+                        break;
+                    case R.id.toolbar_call:
+                        Intent intent = new Intent(Intent.ACTION_CALL);
+                        Uri data = Uri.parse("tel:" + "15553459906");
+                        intent.setData(data);
+                        startActivity(intent);
                         break;
                 }
                 return true;
