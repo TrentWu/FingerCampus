@@ -49,6 +49,9 @@
     <string name="addCourse">&#xe686;</string>
     <string name="add">&#xe686;</string>
     <string name="classroom">教室</string>
+    <string name="classroon_manage">教室管理</string>
+    <string name="repair_manage">报修管理</string>
+    <string name="qiandaoguanli">签到详情</string>
     <string name="about">关于</string>
     <string name="title">一点校园</string>
     <string name="function">一点校园致力于在校学生实现手机签到，手机报修，课程表查询等模块。简便易用，易于使用。</string>
@@ -65,6 +68,7 @@
     <string name="number">编号</string>
     <string name="call">联系管理</string>
     <string name="apply">我的申请</string>
+    <string name="allapply">教室申请列表</string>
 
     <string name="scan_code">签到扫描</string>
     <string name="open_flash">打开闪光灯</string>

@@ -15,9 +15,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.fingercampus.Apply.ApplyActivity;
+import com.example.fingercampus.Apply.ApplyAdmin;
+import com.example.fingercampus.Apply.MyApplication;
 import com.example.fingercampus.Attendance.AttendanceActivity;
 import com.example.fingercampus.Database.Dao;
 import com.example.fingercampus.Net.LoginActivity;
+import com.example.fingercampus.Repair.MyRepair;
 import com.example.fingercampus.Repair.RepairActivity;
 import com.example.fingercampus.Timetable.TimetableActivity;
 import com.example.fingercampus.Tools.LogUtil;
@@ -51,24 +54,12 @@ public class AdminActivity extends AppCompatActivity {
      * 初始化视图组件交互事件
      */
     private void initViewEvent() {
-//        Button logout = findViewById(R.id.logout);
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
-//                SharedPreferences.Editor editor = sharedPreferences.edit();
-//                editor.clear();
-//                editor.apply();
-//                Toast.makeText(MainActivity.this, "注销成功！", Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//                finish();
-//            }
-//        });
+
         Button repair = findViewById(R.id.repair);
         repair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(AdminActivity.this, RepairActivity.class);
+                intent = new Intent(AdminActivity.this, MyRepair.class);
                 intent.putExtra("usphone",usphone);
                 startActivity(intent);
             }
@@ -77,17 +68,7 @@ public class AdminActivity extends AppCompatActivity {
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AdminActivity.this,"申请教室",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(AdminActivity.this, ApplyActivity.class));
-            }
-        });
-        Button timetable=findViewById(R.id.toolbar_timetable);
-        timetable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(AdminActivity.this, TimetableActivity.class);
-                intent.putExtra("usphone", usphone);
-                startActivity(intent);
+                startActivity(new Intent(AdminActivity.this, ApplyAdmin.class));
             }
         });
         Button attendance = findViewById(R.id.toolbar_attendance);

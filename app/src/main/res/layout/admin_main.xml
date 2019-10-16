@@ -69,10 +69,10 @@
                     android:layout_width="0dp"
                     tools:ignore="ButtonStyle" />
                 <Button
-                    android:id="@+id/toolbar_timetable"
+                    android:id="@+id/apply"
                     android:layout_margin="1dp"
                     android:layout_gravity="fill"
-                    android:background="@drawable/ic_kechengbiao"
+                    android:background="@drawable/ic_classroom"
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -86,29 +86,32 @@
                 android:alignmentMode="alignBounds">
 
                 <Button
+                    android:id="@+id/qiandao"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     tools:ignore="ButtonStyle"
                     android:background="#0fff"
                     android:layout_width="0dp"
-                    android:text="签到"
+                    android:text="@string/qiandaoguanli"
                     />
 
                 <Button
+                    android:id="@+id/baoxiu"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#0fff"
                     android:layout_width="0dp"
-                    android:text="报修"/>
+                    android:text="@string/repair_manage"/>
                 <Button
+                    android:id="@+id/jiaoshi"
                     android:layout_margin="1dp"
                     android:layout_height="wrap_content"
                     android:background="#0fff"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:text="课程表"
+                    android:text="@string/classroon_manage"
                     />
             </LinearLayout>
             <LinearLayout
@@ -119,32 +122,9 @@
                 android:layout_marginEnd="20dp"
                 android:alignmentMode="alignBounds">
 
-                <Button
-                    android:id="@+id/apply"
-                    android:layout_margin="1dp"
-                    android:layout_gravity="fill"
-                    android:background="@drawable/ic_classroom"
-                    android:layout_height="100dp"
-                    android:layout_width="100dp"
-                    tools:ignore="ButtonStyle" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="20dp"
-                android:alignmentMode="alignBounds">
 
-                <Button
-                    android:layout_margin="1dp"
-                    android:layout_gravity="fill"
-                    android:background="#0fff"
-                    android:layout_height="wrap_content"
-                    android:text="教室申请"
-                    tools:ignore="ButtonStyle"
-                    android:layout_width="wrap_content" />
             </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
