@@ -80,6 +80,7 @@ public class MyApplication extends Activity {
         adapter = new SimpleAdapter(this, mList, R.layout.application_item,
                 new String[]{"id", "name", "classroom", "usersnumber", "date", "usphone", "section"},
                 new int[]{R.id.id, R.id.name, R.id.classroom, R.id.users, R.id.date, R.id.phone, R.id.section});
+        listView.setAdapter(adapter);
     }
     /*
      ***用户查询类
