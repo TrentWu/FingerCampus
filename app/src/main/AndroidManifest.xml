@@ -75,6 +75,7 @@
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".UserCenter.AdminCenter" />
         <activity android:name=".Apply.ApplyAdmin" />
+        <activity android:name=".Repair.AdminRepair" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

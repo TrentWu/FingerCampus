@@ -20,6 +20,7 @@ import com.example.fingercampus.Apply.MyApplication;
 import com.example.fingercampus.Attendance.AttendanceActivity;
 import com.example.fingercampus.Database.Dao;
 import com.example.fingercampus.Net.LoginActivity;
+import com.example.fingercampus.Repair.AdminRepair;
 import com.example.fingercampus.Repair.MyRepair;
 import com.example.fingercampus.Repair.RepairActivity;
 import com.example.fingercampus.Timetable.TimetableActivity;
@@ -59,7 +60,7 @@ public class AdminActivity extends AppCompatActivity {
         repair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(AdminActivity.this, MyRepair.class);
+                intent = new Intent(AdminActivity.this, AdminRepair.class);
                 intent.putExtra("usphone",usphone);
                 startActivity(intent);
             }

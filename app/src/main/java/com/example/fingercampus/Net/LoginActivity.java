@@ -53,9 +53,9 @@ public class LoginActivity extends Activity {
         if (sharedPreferences.getString(Constants.RECORD.rephone, null) != null) {
             Intent intent = new Intent();
             intent.putExtra("usphone", sharedPreferences.getString(Constants.RECORD.rephone, null));
-            if (sharedPreferences.getString(Constants.RECORD.rephone, null).equals("18663334399")) {
+            if (sharedPreferences.getString(Constants.RECORD.rephone, null).equals("18663334399"))
                 intent.setClass(LoginActivity.this,AdminActivity.class);
-            }
+
             else
                 intent.setClass(LoginActivity.this, MainActivity.class);
             startActivity(intent);
@@ -96,7 +96,8 @@ public class LoginActivity extends Activity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(Constants.RECORD.rephone, "18663334399");
                     editor.apply();
-
+                    loginButton.setClickable(false);
+                    startActivity(new Intent(LoginActivity.this,AdminActivity.class));
                 } else{
                     if (VerificationUtil.phoneNumber(account)) {
                         loginButton.setClickable(false);

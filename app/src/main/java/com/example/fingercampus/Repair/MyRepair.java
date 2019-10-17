@@ -1,11 +1,14 @@
 package com.example.fingercampus.Repair;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -42,6 +45,7 @@ public class MyRepair extends Activity {
         setContentView(R.layout.myrepair);
         listView = findViewById(R.id.listView);
         typeface = Typeface.createFromAsset(getAssets(), "iconfont/iconfont.ttf");
+        Button button = findViewById(R.id.state_button);
         Button back = findViewById(R.id.back);
         back.setTypeface(typeface);
         back.setOnClickListener(new View.OnClickListener() {
@@ -52,8 +56,18 @@ public class MyRepair extends Activity {
         });
         queryRequest();
         adapter = new SimpleAdapter(this, mList, R.layout.repair_item,
-                new String[]{"id", "type", "position", "usersnumber", "usphone", "description", "state"},
-                new int[]{R.id.id, R.id.type, R.id.position, R.id.phone, R.id.date, R.id.description, R.id.state});
+                new String[]{"id", "type", "position", "usphone", "description", "state"},
+                new int[]{R.id.id, R.id.type, R.id.position, R.id.phone, R.id.description, R.id.state}){
+        //在这个重写的函数里设置 每个 item 中按钮的响应事件
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            final int p=position;
+            final View view=super.getView(position, convertView, parent);
+            final Button button=(Button)view.findViewById(R.id.state_button);
+            button.setVisibility(View.INVISIBLE);
+            return view;
+        }
+    };
         listView.setAdapter(adapter);
 
         Button fresh = (Button) findViewById(R.id.fresh);

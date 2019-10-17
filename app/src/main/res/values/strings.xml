@@ -78,4 +78,6 @@
     <string name="position">地点</string>
     <string name="state">状态</string>
     <string name="description">描述</string>
+
+    <string name="chuli">未完成</string>
 </resources>
