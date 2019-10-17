@@ -312,6 +312,14 @@
                 android:textSize="18sp"
                 android:background="@drawable/btn"
                 android:visibility="gone"/>
+            <Button
+                android:id="@+id/btn_bind"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/bind"
+                android:textSize="18sp"
+                android:background="@drawable/btn"
+                android:visibility="gone"/>
         </LinearLayout>
     </LinearLayout>
 

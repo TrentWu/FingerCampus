@@ -80,6 +80,7 @@ public class UserCenterActivity extends AppCompatActivity {
     Button btn_addstudentinfo;
     Button btn_edit;
     Button btn_save;
+    Button btn_bind;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,7 +117,30 @@ public class UserCenterActivity extends AppCompatActivity {
         stduniversity_ll = findViewById(R.id.stduniversity_ll);
         edustartdate_tv = findViewById(R.id.edustartdate_tv);
         edustartdate_ll = findViewById(R.id.edustartdate_ll);
+        btn_bind = findViewById(R.id.btn_bind);
         btn_addstudentinfo = findViewById(R.id.btn_addstudentinfo);
+        btn_addstudentinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stdname_ll.setVisibility(View.VISIBLE);
+                stdsex_ll.setVisibility(View.VISIBLE);
+                stdclass_ll.setVisibility(View.VISIBLE);
+                stdcollege_ll.setVisibility(View.VISIBLE);
+                stdmajor_ll.setVisibility(View.VISIBLE);
+                stdno_ll.setVisibility(View.VISIBLE);
+                stduniversity_ll.setVisibility(View.VISIBLE);
+                edustartdate_ll.setVisibility(View.VISIBLE);
+                editInfo();
+                btn_addstudentinfo.setVisibility(View.GONE);
+                btn_bind.setVisibility(View.VISIBLE);
+            }
+        });
+        btn_bind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BindStudentRequest(stdname, stdsex, stduniversity, stdcollege, stdmajor, stdclass, stdno, edustartdate, stdphone);
+            }
+        });
         btn_edit = findViewById(R.id.btn_edit);
         btn_save = findViewById(R.id.btn_save);
         btn_save.setOnClickListener(new View.OnClickListener() {
@@ -470,6 +494,81 @@ public class UserCenterActivity extends AppCompatActivity {
                 params.put("stdclass", stdclass);  //注⑥
                 params.put("stdno", stdno);  //注⑥
                 params.put("edustartdate", edustartdate);  //注⑥
+                return params;
+            }
+        };
+
+        //设置Tag标签
+        request.setTag(tag);
+
+        //将请求添加到队列中
+        requestQueue.add(request);
+    }
+
+    /**
+     * @param stdname
+     * @param stdsex
+     * @param stduniversity
+     * @param stdcollege
+     * @param stdmajor
+     * @param stdclass
+     * @param stdno
+     * @param edustartdate
+     * @param stdphone
+     */
+    public void BindStudentRequest(final String stdname, final String stdsex, final String stduniversity, final String stdcollege, final String stdmajor, final String stdclass, final String stdno, final String edustartdate, final String stdphone) {
+        //请求地址
+        String url = "http://119.3.232.205:8080/FingerCampus/*";    //注①
+        final String tag = "Student";    //注②
+
+        //取得请求队列
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        //防止重复请求，所以先取消tag标识的请求队列
+        requestQueue.cancelAll(tag);
+
+        //创建StringRequest，定义字符串请求的请求方式为POST(省略第一个参数会默认为GET方式)
+        final StringRequest request = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");  //注③
+                            String result = jsonObject.getString("Result");  //注④
+                            if (result.equals("success")) {  //注⑤
+                                Toast.makeText(UserCenterActivity.this, "绑定成功！", Toast.LENGTH_SHORT).show();
+                                recreate();
+                            }else if(result.equals("existed")){
+                                Toast.makeText(UserCenterActivity.this, "该学号已绑定其他用户！", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(UserCenterActivity.this, "请正确填写信息！", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            Toast.makeText(UserCenterActivity.this, "无网络连接", Toast.LENGTH_SHORT).show();
+                            Log.e(TAG, e.getMessage(), e);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(UserCenterActivity.this, "请稍后重试", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, error.getMessage(), error);
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("RequestType", tag);
+                params.put("action", "insert");
+                params.put("stdname", stdname);  //注⑥
+                params.put("stdsex", stdsex);  //注⑥
+                params.put("stduniversity", stduniversity);  //注⑥
+                params.put("stdcollege", stdcollege);  //注⑥
+                params.put("stdmajor", stdmajor);  //注⑥
+                params.put("stdclass", stdclass);  //注⑥
+                params.put("stdno", stdno);  //注⑥
+                params.put("edustartdate", edustartdate);  //注⑥
+                params.put("stdphone", stdphone);  //注⑥
                 return params;
             }
         };
