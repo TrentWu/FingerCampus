@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -58,26 +59,16 @@ public class MyRepair extends Activity {
         adapter = new SimpleAdapter(this, mList, R.layout.repair_item,
                 new String[]{"id", "type", "position", "usphone", "description", "state"},
                 new int[]{R.id.id, R.id.type, R.id.position, R.id.phone, R.id.description, R.id.state}){
-        //在这个重写的函数里设置 每个 item 中按钮的响应事件
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            final int p=position;
-            final View view=super.getView(position, convertView, parent);
-            final Button button=(Button)view.findViewById(R.id.state_button);
-            button.setVisibility(View.INVISIBLE);
-            return view;
-        }
-    };
-        listView.setAdapter(adapter);
-
-        Button fresh = (Button) findViewById(R.id.fresh);
-        fresh.setOnClickListener(new View.OnClickListener() {
+            //在这个重写的函数里设置 每个 item 中按钮的响应事件
             @Override
-            public void onClick(View view) {
-                listView.setAdapter(adapter);
+            public View getView(final int position, View convertView, ViewGroup parent) {
+                final int p=position;
+                final View view=super.getView(position, convertView, parent);
+                final LinearLayout state_ll = view.findViewById(R.id.state_ll);
+                state_ll.setVisibility(View.GONE);
+                return view;
             }
-
-        });
+        };
     }
     /**
      ***用户查询类
@@ -101,7 +92,6 @@ public class MyRepair extends Activity {
                         try {
                             JSONArray jsonArr = (JSONArray)new JSONObject(response).get("list1");  //注③
                             LogUtil.d(TAG,jsonArr.toString());
-                            Toast.makeText(MyRepair.this,"请刷新！",Toast.LENGTH_SHORT).show();
                             for(int i=0;i<jsonArr.length();i++){
                                 Map<String ,Object> map=new HashMap<String, Object>();
                                 map.put("id",i+1);
@@ -115,6 +105,7 @@ public class MyRepair extends Activity {
                                 map.put("imagePath",jsonArr.getJSONObject(i).get("imagePath").toString());
                                 map.put("recordPath",jsonArr.getJSONObject(i).get("recordPath").toString());
                                 mList.add(map);
+                                listView.setAdapter(adapter);
                             }
                         } catch (JSONException e) {
                             //loginButton.setClickable(true);

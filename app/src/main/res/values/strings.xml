@@ -80,4 +80,6 @@
     <string name="description">描述</string>
 
     <string name="chuli">未完成</string>
+    <string name="usercenter">个人中心</string>
+    <string name="edit">编辑</string>
 </resources>

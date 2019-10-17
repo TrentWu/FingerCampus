@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
@@ -24,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +44,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.fingercampus.Constants;
+import com.example.fingercampus.Net.FileUpload;
 import com.example.fingercampus.Net.RegisterActivity;
 import com.example.fingercampus.PermissionsActivity;
 import com.example.fingercampus.R;
@@ -75,9 +78,7 @@ public class RepairActivity extends AppCompatActivity {
     private String descriptionText;
     private String imagePath;
     private LinearLayout plus_ll;
-    private Button audio;
     private Button recording;
-    private Button picture;
     private ImageView iv_CameraImg;
     private Context context;
     private String state;
@@ -90,6 +91,8 @@ public class RepairActivity extends AppCompatActivity {
     private AudioRecorderUtil mrecord = new AudioRecorderUtil();
 
     private Button picCancel;
+
+    private String imageName;
 
     private String path = Environment.getExternalStorageDirectory() +
             File.separator + Environment.DIRECTORY_DCIM + File.separator;
@@ -120,6 +123,13 @@ public class RepairActivity extends AppCompatActivity {
         setContentView(R.layout.repairs_main);
         permissionCheckerUtil = new PermissionsCheckerUtil(this);
         init();
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads().detectDiskWrites().detectNetwork()
+                .penaltyLog().build());
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectLeakedSqlLiteObjects().detectLeakedClosableObjects()
+                .penaltyLog().penaltyDeath().build());
     }
 
     private void init() {
@@ -162,20 +172,24 @@ public class RepairActivity extends AppCompatActivity {
         position = findViewById(R.id.repair_position);
         description = findViewById(R.id.repair_des);
         Button plus = findViewById(R.id.repair_plus);
-        audio = findViewById(R.id.repair_audio);
+        Button audio = findViewById(R.id.repair_audio);
         audio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ShowPopupWindow showPopupWindow = new ShowPopupWindow();
                 showPopupWindow.recording(v);
+                plus_ll.setVisibility(View.INVISIBLE);
+                hideKeyboard(v);
             }
         });
-        picture = findViewById(R.id.repair_picture);
+        Button picture = findViewById(R.id.repair_picture);
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ShowPopupWindow showPopupWindow = new ShowPopupWindow();
                 showPopupWindow.picture(v);
+                plus_ll.setVisibility(View.INVISIBLE);
+                hideKeyboard(v);
             }
         });
         plus_ll = findViewById(R.id.repair_plus_ll);
@@ -235,7 +249,8 @@ public class RepairActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             //相机功能
-                            imagePath = path + "IMG_" + getFileName() + ".jpg";
+                            imageName = "IMG_" + getFileName() + ".jpg";
+                            imagePath = path + imageName;
                             File file = new File(imagePath);
                             try {
                                 if (file.exists()) {
@@ -269,6 +284,7 @@ public class RepairActivity extends AppCompatActivity {
                             Intent intent = new Intent(Intent.ACTION_PICK,
                                     MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                             startActivityForResult(intent, GALLERY_CODE); // 打开相册
+                            popupWindow.dismiss();
                         }
                     });
 
@@ -405,7 +421,32 @@ public class RepairActivity extends AppCompatActivity {
                             JSONObject jsonObject = (JSONObject) new JSONObject(response).get("params");
                             String result = jsonObject.getString("Result");
                             if (result.equals("success")) {
-                                Toast.makeText(RepairActivity.this, "申请已经提交，等待管理员审核！", Toast.LENGTH_SHORT).show();
+                                if(imagePath == null || imagePath == ""){
+                                    Toast.makeText(RepairActivity.this, "申请已经提交，等待管理员审核！", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    final HashMap<String, String> params = new HashMap<>();
+                                    params.put("RequestType", "UploadFile");
+                                    params.put("recordPath", recordPath);
+                                    params.put("odphone", usphone);
+                                    params.put("odstarttime", starttime);
+                                    final File uploadFile = new File(imagePath);
+                                    final String newFileName = imageName;
+                                    final String fileFormName = "image";
+                                    final String urlStr = "http://119.3.232.205:8080/FingerCampus/UploadFileServlet";
+                                    Boolean uploadResult = false;
+                                    try {
+                                        uploadResult = FileUpload.uploadForm(params, fileFormName, uploadFile, newFileName, urlStr);
+                                    } catch (IOException e) {
+                                        Toast.makeText(getApplicationContext(), "文件上传失败！", Toast.LENGTH_SHORT).show();
+                                        e.printStackTrace();
+                                    }
+                                    if(uploadResult){
+                                        finish();
+                                        Toast.makeText(RepairActivity.this, "申请已经提交，等待管理员审核！", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Toast.makeText(RepairActivity.this, "文件上传失败！", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
                             } else {
                                 Toast.makeText(getApplicationContext(), "申请提交失败！", Toast.LENGTH_SHORT).show();
                             }
@@ -432,11 +473,9 @@ public class RepairActivity extends AppCompatActivity {
                 params.put("odstate",state);
                 params.put("odstarttime",starttime);
                 params.put("odendtime",endtime);
-                params.put("imagePath",imagePath);
-                params.put("recordPath",recordPath);
                 LogUtil.d(tag, "RequestType = "+tag+" odphone = "+usphone+" odtype = "+selectText
                         +" odplace = "+positionText+" oddescription = "+descriptionText+" odstate = "+state
-                        +" odstarttime = "+starttime+" odendtime = "+endtime+" imagePath = "+imagePath+" recordPath = "+recordPath);
+                        +" odstarttime = "+starttime+" odendtime = "+endtime);
                 return params;
             }
         };
@@ -447,6 +486,11 @@ public class RepairActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
+    //隐藏软键盘
+    public void hideKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 
 }
 

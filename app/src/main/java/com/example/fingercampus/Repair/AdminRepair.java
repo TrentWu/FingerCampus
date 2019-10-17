@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -72,57 +73,46 @@ public class AdminRepair extends Activity {
                 public View getView(final int position, View convertView, ViewGroup parent) {
                 final int p=position;
                 final View view=super.getView(position, convertView, parent);
-                final Button button=(Button)view.findViewById(R.id.state_button);
-                button.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-
-                        //警告框的写法
-                        new AlertDialog.Builder(AdminRepair.this)
-                                .setTitle("提示")
-                                .setMessage("确定完成？")
-                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        setTitle("点击了对话框上的确定按钮");
-                                        odid = mList.get(position).get("odid").toString();
-                                        odendtime = getCurrentTime();
-                                        state = "已完成";
-                                        UpdateStateRequest(state,odendtime,odid);
-                                        button.setText(state);
-                                        LogUtil.d(TAG,odid+" "+odendtime+" "+" "+state);
-                                        button.setVisibility(View.INVISIBLE);
-                                        setTitle("点击了对话框上的点击按钮");
-                                    }
-                                })
+                final String odstate = mList.get(position).get("state").toString();
+                if (odstate.equals("已完成")){
+                    final LinearLayout state_ll = view.findViewById(R.id.state_ll);
+                    state_ll.setVisibility(View.GONE);
+                }else {
+                    final Button button=view.findViewById(R.id.state_button);
+                    button.setText("完成");
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //警告框的写法
+                            new AlertDialog.Builder(AdminRepair.this)
+                                    .setTitle("提示")
+                                    .setMessage("确定完成？")
+                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            odid = mList.get(position).get("odid").toString();
+                                            odendtime = getCurrentTime();
+                                            state = "已完成";
+                                            UpdateStateRequest(state,odendtime,odid);
+                                        }
+                                    })
 //                                .setNeutralButton("中立" ,new DialogInterface.OnClickListener() {
 //                                    public void onClick(DialogInterface dialog, int whichButton) {
 //                                        setTitle("点击了对话框上的中立按钮");
 //                                    }
 //                                })
-                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int whichButton) {
-                                        setTitle("点击了对话框上的取消按钮");
-                                    }
-                                })
-                                .create()
-                                .show();
-                    }
-                });
+                                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int whichButton) {
+                                            setTitle("点击了对话框上的取消按钮");
+                                        }
+                                    })
+                                    .create()
+                                    .show();
+                        }
+                    });
+                }
                 return view;
             }
         };
-        listView.setAdapter(adapter);
-
-        Button fresh = (Button) findViewById(R.id.fresh);
-        fresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                listView.setAdapter(adapter);
-            }
-
-        });
     }
     /**
      ***用户查询类
@@ -146,7 +136,6 @@ public class AdminRepair extends Activity {
                         try {
                             JSONArray jsonArr = (JSONArray)new JSONObject(response).get("list1");  //注③
                             LogUtil.d(TAG,jsonArr.toString());
-                            Toast.makeText(AdminRepair.this,"请刷新！",Toast.LENGTH_SHORT).show();
                             for(int i=0;i<jsonArr.length();i++){
                                 Map<String ,Object> map=new HashMap<String, Object>();
                                 map.put("id",i+1);
@@ -161,6 +150,7 @@ public class AdminRepair extends Activity {
                                 map.put("imagePath",jsonArr.getJSONObject(i).get("imagePath").toString());
                                 map.put("recordPath",jsonArr.getJSONObject(i).get("recordPath").toString());
                                 mList.add(map);
+                                listView.setAdapter(adapter);
                             }
                         } catch (JSONException e) {
                             //loginButton.setClickable(true);
