@@ -195,7 +195,7 @@ public class AttendanceActivity extends Activity {
                                     break;
                                 }
                                 case "noresult":
-                                    Toast.makeText(AttendanceActivity.this, "未来十分钟内没有需要签到的课程", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AttendanceActivity.this, "签到成功", Toast.LENGTH_SHORT).show();
                                     finish();
                                     break;
                                 case "alreadyattendance": {

@@ -69,16 +69,6 @@ public class ApplyAdmin extends AppCompatActivity {
         adapter = new SimpleAdapter(this, mList, R.layout.application_item,
                 new String[]{"id", "name", "classroom", "usersnumber", "date", "usphone", "section"},
                 new int[]{R.id.id, R.id.name, R.id.classroom, R.id.users, R.id.date, R.id.phone, R.id.section});
-        listView.setAdapter(adapter);
-
-        Button fresh = (Button) findViewById(R.id.fresh);
-        fresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listView.setAdapter(adapter);
-            }
-
-        });
     }
     /*
      ***用户查询类
@@ -102,7 +92,6 @@ public class ApplyAdmin extends AppCompatActivity {
                         try {
                             JSONArray jsonArr = (JSONArray)new JSONObject(response).get("list");  //注③
                             LogUtil.d(TAG,jsonArr.toString());
-                            Toast.makeText(ApplyAdmin.this,"请刷新！",Toast.LENGTH_SHORT).show();;
                             for(int i=0;i<jsonArr.length();i++){
                                 Map<String ,Object> map=new HashMap<String, Object>();
                                 map.put("id",i+1);
@@ -113,6 +102,7 @@ public class ApplyAdmin extends AppCompatActivity {
                                 map.put("usersnumber",jsonArr.getJSONObject(i).get("usersnumber").toString());
                                 map.put("section",jsonArr.getJSONObject(i).get("section").toString());
                                 mList.add(map);
+                                listView.setAdapter(adapter);
                             }
                         } catch (JSONException e) {
                             //loginButton.setClickable(true);
