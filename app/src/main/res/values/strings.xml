@@ -82,4 +82,6 @@
     <string name="chuli">未完成</string>
     <string name="usercenter">个人中心</string>
     <string name="edit">编辑</string>
+    <string name="addstudentinfo">填写学生信息</string>
+    <string name="save">保存</string>
 </resources>
