@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        LogUtil.LEVEL = LogUtil.VERBOSE;//控制日志信息的打印 NOTHING=不打印任何日志 VERBOSE=打印所有日志信息
+        LogUtil.LEVEL = LogUtil.NOTHING;//控制日志信息的打印 NOTHING=不打印任何日志 VERBOSE=打印所有日志信息
 
         new Dao(this);//创建SQLite数据库实例
         initToolbar();
