@@ -159,7 +159,6 @@ public class AddCourseActivity extends Activity {
                     String result = jsonObject.getString("Result");  //注④
                     if (result.equals("success")) {  //注⑤
                         Toast.makeText(AddCourseActivity.this, "导入成功！", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(AddCourseActivity.this, TimetableActivity.class));
                         finish();
                     } else {
                         Toast.makeText(AddCourseActivity.this, "导入失败！", Toast.LENGTH_LONG).show();
@@ -192,6 +191,7 @@ public class AddCourseActivity extends Activity {
                 params.put("clrname", clrname);
                 params.put("tcname", tcname);
                 params.put("usphone", usphone);
+                LogUtil.d("tag", params.toString());
                 return params;
             }
         };

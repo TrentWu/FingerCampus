@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/id"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/csname"
+            android:textAlignment="center"
+            android:layout_width="94dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/csweek"
+            android:textAlignment="center"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/csday"
+            android:textAlignment="center"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/stdname"
+            android:textAlignment="center"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/stdcollege"
+            android:textAlignment="center"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/lsattendance"
+            android:textAlignment="center"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

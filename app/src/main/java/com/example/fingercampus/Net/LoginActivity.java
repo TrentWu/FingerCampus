@@ -52,8 +52,9 @@ public class LoginActivity extends Activity {
         SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
         if (sharedPreferences.getString(Constants.RECORD.rephone, null) != null) {
             Intent intent = new Intent();
-            intent.putExtra("usphone", sharedPreferences.getString(Constants.RECORD.rephone, null));
-            if (sharedPreferences.getString(Constants.RECORD.rephone, null).equals("18663334399"))
+            String usphone = sharedPreferences.getString(Constants.RECORD.rephone, null);
+            intent.putExtra("usphone", usphone);
+            if (usphone.equals("18663334399"))
                 intent.setClass(LoginActivity.this,AdminActivity.class);
 
             else

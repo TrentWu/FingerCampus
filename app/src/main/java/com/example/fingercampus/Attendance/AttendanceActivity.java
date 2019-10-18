@@ -189,23 +189,23 @@ public class AttendanceActivity extends Activity {
                             String result = (String) new JSONObject(response).get("Result");  //注③
                             switch (result) {
                                 case "success": {  //注⑤
-                                    String coursename = (String) new JSONObject(response).get("CourseName");
-                                    Toast.makeText(AttendanceActivity.this, "课程：" + coursename + "，签到成功！", Toast.LENGTH_SHORT).show();
+                                    String coursename = (String) new JSONObject(response).get("csname");
+                                    Toast.makeText(AttendanceActivity.this, "课程：" + coursename + "，签到成功!", Toast.LENGTH_SHORT).show();
                                     finish();
                                     break;
                                 }
                                 case "noresult":
-                                    Toast.makeText(AttendanceActivity.this, "签到成功", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AttendanceActivity.this, "未来十分钟没有要签到的课程!", Toast.LENGTH_SHORT).show();
                                     finish();
                                     break;
                                 case "alreadyattendance": {
-                                    String coursename = (String) new JSONObject(response).get("CourseName");
+                                    String coursename = (String) new JSONObject(response).get("csname");
                                     Toast.makeText(AttendanceActivity.this, "课程：" + coursename + "，已签到", Toast.LENGTH_SHORT).show();
                                     finish();
                                     break;
                                 }
                                 default:
-                                    Toast.makeText(AttendanceActivity.this, "请扫描正确的签到码！", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AttendanceActivity.this, "请扫描正确的签到码!", Toast.LENGTH_SHORT).show();
                                     break;
                             }
                         } catch (JSONException e) {

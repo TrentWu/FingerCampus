@@ -76,6 +76,7 @@
         <activity android:name=".UserCenter.AdminCenter" />
         <activity android:name=".Apply.ApplyAdmin" />
         <activity android:name=".Repair.AdminRepair" />
+        <activity android:name=".Attendance.AttendanceDetailsActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

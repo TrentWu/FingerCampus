@@ -18,6 +18,7 @@ import com.example.fingercampus.Apply.ApplyActivity;
 import com.example.fingercampus.Apply.ApplyAdmin;
 import com.example.fingercampus.Apply.MyApplication;
 import com.example.fingercampus.Attendance.AttendanceActivity;
+import com.example.fingercampus.Attendance.AttendanceDetailsActivity;
 import com.example.fingercampus.Database.Dao;
 import com.example.fingercampus.Net.LoginActivity;
 import com.example.fingercampus.Repair.AdminRepair;
@@ -46,7 +47,8 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.admin_main);
         LogUtil.LEVEL = LogUtil.VERBOSE;//控制日志信息的打印 NOTHING=不打印任何日志 VERBOSE=打印所有日志信息
 
-        new Dao(this);//创建SQLite数据库实例
+        intent = getIntent();
+        usphone = intent.getStringExtra("usphone");
         initToolbar();
         initViewEvent();
     }
@@ -72,11 +74,13 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(new Intent(AdminActivity.this, ApplyAdmin.class));
             }
         });
-        Button attendance = findViewById(R.id.toolbar_attendance);
-        attendance.setOnClickListener(new View.OnClickListener() {
+        Button attendancedetails = findViewById(R.id.attendancedetails);
+        attendancedetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, AttendanceActivity.class));
+                intent.putExtra("usphone", usphone);
+                intent.setClass(AdminActivity.this, AttendanceDetailsActivity.class);
+                startActivity(intent);
             }
         });
     }

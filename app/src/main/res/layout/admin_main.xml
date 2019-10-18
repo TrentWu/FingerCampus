@@ -50,7 +50,7 @@
                 android:alignmentMode="alignBounds">
 
                 <Button
-                    android:id="@+id/toolbar_attendance"
+                    android:id="@+id/attendancedetails"
                     android:background="@drawable/ic_qiandao"
                     android:textColor="#EDF0AA"
                     android:layout_height="100dp"

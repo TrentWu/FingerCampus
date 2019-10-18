@@ -3,6 +3,7 @@
     <words>
       <w>alreadyattendance</w>
       <w>applyforclass</w>
+      <w>attendancedetails</w>
       <w>autofocus</w>
       <w>buttonid</w>
       <w>clrid</w>
@@ -14,6 +15,7 @@
       <w>csetime</w>
       <w>cseweek</w>
       <w>csname</w>
+      <w>csweek</w>
       <w>cwbtime</w>
       <w>cwetime</w>
       <w>fingercampus</w>
@@ -22,8 +24,10 @@
       <w>redate</w>
       <w>rephone</w>
       <w>smssdk</w>
+      <w>stdname</w>
       <w>tcid</w>
       <w>tcname</w>
+      <w>timetablelist</w>
       <w>uspassword</w>
       <w>usphone</w>
       <w>zxing</w>

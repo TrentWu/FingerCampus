@@ -85,4 +85,13 @@
     <string name="addstudentinfo">填写学生信息</string>
     <string name="save">保存</string>
     <string name="bind">绑定</string>
+    <string name="attendancedetails">签到明细</string>
+    <string name="stdname">学生姓名</string>
+    <string name="stdsex">性别</string>
+    <string name="stdcollege">院系</string>
+    <string name="stdclass">班级</string>
+    <string name="csname">课程名称</string>
+    <string name="csday">星期</string>
+    <string name="lsattendance">考勤状态</string>
+    <string name="csweek">周次</string>
 </resources>
