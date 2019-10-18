@@ -72,13 +72,15 @@ public class AdminRepair extends Activity {
                 @Override
                 public View getView(final int position, View convertView, ViewGroup parent) {
                 final int p=position;
-                final View view=super.getView(position, convertView, parent);
-                final String odstate = mList.get(position).get("state").toString();
+                final View view=super.getView(p, convertView, parent);
+                final String odstate = mList.get(p).get("state").toString();
                 if (odstate.equals("已完成")){
-                    final LinearLayout state_ll = view.findViewById(R.id.state_ll);
+                    LinearLayout state_ll = view.findViewById(R.id.state_ll);
                     state_ll.setVisibility(View.GONE);
-                }else {
-                    final Button button=view.findViewById(R.id.state_button);
+                }else if(odstate.equals("待处理")){
+                    LinearLayout state_ll = view.findViewById(R.id.state_ll);
+                    state_ll.setVisibility(View.VISIBLE);
+                    Button button=view.findViewById(R.id.state_button);
                     button.setText("完成");
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -89,17 +91,11 @@ public class AdminRepair extends Activity {
                                     .setMessage("确定完成？")
                                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
-                                            odid = mList.get(position).get("odid").toString();
+                                            odid = mList.get(p).get("odid").toString();
                                             odendtime = getCurrentTime();
-                                            state = "已完成";
-                                            UpdateStateRequest(state,odendtime,odid);
+                                            UpdateStateRequest("已完成",odendtime,odid);
                                         }
                                     })
-//                                .setNeutralButton("中立" ,new DialogInterface.OnClickListener() {
-//                                    public void onClick(DialogInterface dialog, int whichButton) {
-//                                        setTitle("点击了对话框上的中立按钮");
-//                                    }
-//                                })
                                     .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int whichButton) {
                                             setTitle("点击了对话框上的取消按钮");
