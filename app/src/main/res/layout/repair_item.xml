@@ -49,13 +49,15 @@
     <LinearLayout
         android:id="@+id/state_ll"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:orientation="vertical">
         <Button
             android:id="@+id/state_button"
             android:layout_gravity="end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:textColor="#FFFFFF"
+            android:background="@color/secondColor"
             android:visibility="visible"
             android:text="@string/chuli"/>
     </LinearLayout>
