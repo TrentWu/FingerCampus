@@ -56,7 +56,6 @@ public class LoginActivity extends Activity {
             intent.putExtra("usphone", usphone);
             if (usphone.equals("18663334399"))
                 intent.setClass(LoginActivity.this,AdminActivity.class);
-
             else
                 intent.setClass(LoginActivity.this, MainActivity.class);
             startActivity(intent);
@@ -98,7 +97,11 @@ public class LoginActivity extends Activity {
                     editor.putString(Constants.RECORD.rephone, "18663334399");
                     editor.apply();
                     loginButton.setClickable(false);
-                    startActivity(new Intent(LoginActivity.this,AdminActivity.class));
+                    Intent intent = new Intent();
+                    intent.putExtra("usphone", "18663334399");
+                    intent.setClass(LoginActivity.this, AdminActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else{
                     if (VerificationUtil.phoneNumber(account)) {
                         loginButton.setClickable(false);
@@ -147,7 +150,6 @@ public class LoginActivity extends Activity {
                                     public void run() {
                                         String netDate = TimeUtil.getNetTime();
                                         dao.uRecordInsert(usphone, netDate);
-                                        Log.d(TAG, "rephone=" + usphone + " redate=" + netDate);
                                     }
                                 }).start();
                                 loginButton.setClickable(true);
